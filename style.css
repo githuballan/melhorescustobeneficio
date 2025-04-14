@@ -1,0 +1,608 @@
+@charset "UTF-8";
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* cores 
+azul: 0E34A0
+#1D3557 azul escuro 
+#457B9D azul medio
+#A8DADC azul claro
+#00FF00 verde
+#566E3D verde musgo
+#E63946 vermelho rosado
+#007bff header antigo
+vermelho pra seta do carrinho*/
+
+:root{
+    --main-color: #1D3557;
+    --secondary-color: #457B9D;
+    --background-color: #f8f9fa;
+    --azul-claro:#A8DADC;
+    --text-color: #343a40;
+    --font-family: 'Lexend', sans-serif;
+}
+
+@media only screen and (max-width: 1099px){
+
+
+    body{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        margin: 0 auto;
+    }
+
+    main{
+       
+       width: 95%;
+       
+    }
+
+    #menu-lateral-esquerda{
+        display: none;
+        max-height: 90vh;
+    }
+    #lateral-esquerda{
+        z-index: 110;
+       
+        position:fixed;
+        top: 57px;
+        left:0px;
+        display: block;
+        height: auto;
+        width: auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        flex-wrap: nowrap;
+    }
+
+    #sumario img{
+        display: block;
+     }   
+
+    
+
+    #menu-hamburguer {
+        display: block;
+        align-self: flex-start;
+        }
+
+    #menu-site {
+        z-index: 120;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: nowrap;
+       
+    }
+    
+
+    h1, h2, h3, h4, h5, h6 {
+        text-align: center;
+    }
+
+}/*max-width: 1099px*/
+@media only screen and (min-width: 1100px) {
+
+   
+    #menu-hamburguer {
+            display: none;
+        }
+
+    body{
+        display: grid;
+        grid-template-areas:
+        "header header header"
+        "nav nav nav"
+        "lateral-esquerda main lateral-direita"
+        "footer footer footer";
+        grid-template-columns: 2fr 6fr 2fr;
+        grid-template-rows: auto auto auto auto;
+        gap: 0px;
+        padding: 0px;
+    }
+    #menu-site {
+        grid-area: nav;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        
+    }
+
+    #menu-site div{
+        margin: 0px 5px 0px 5px;
+        
+    }
+
+    header{
+        grid-area: header;
+    }
+    main{
+        grid-area: main;
+      
+    }
+    footer{
+        grid-area: footer;
+    }
+    
+    #shortcuts{
+        transition: all 0.5s linear;
+       
+    }
+
+    #shortcuts li{
+        margin-left:40px;
+        margin-top: 10px;
+        text-decoration: none;
+    }
+     #lateral-esquerda{
+        grid-area: lateral-esquerda;
+        height: 100%;
+        width: 100%;
+        min-width: 200px;
+        min-height: 200px;
+        background-color: var(--main-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: center;
+        flex-wrap: nowrap;
+        }
+       
+      
+           
+        #menu-lateral-esquerda{
+            display: block;
+            position: sticky;
+            top: 20px;
+            margin-top: 20px;
+           
+        }
+       
+
+    
+
+   
+
+    }/*min-width: 1100px*/
+
+#lateral-esquerda{
+    background-color: var(--main-color);
+   
+    
+}
+#menu-lateral-esquerda{
+    background-color: var(--azul-claro);
+    padding: 5px;
+    overflow-y: auto;
+}
+
+#sumario{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-top: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    background-color: var(--azul-claro);
+   
+}
+
+#sumario img{
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+    margin-left: 20px;
+}
+#sumario strong{
+    text-decoration: none;
+    color: inherit;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+main {
+    display: block;
+    max-width: 800px;
+     /* Ajusta para ocupar toda a largura disponível */
+}
+#menu-site {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+   
+    background-color: var(--secondary-color);
+    padding: 10px 0;
+    transition: all 0.5s linear;
+   
+}
+
+
+#menu-hamburguer {
+    cursor: pointer;
+    border: solid 0px #000;
+    border-radius: 5px;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    background-color: #ffffff00;
+    
+    
+}
+
+#menu-hamburguer .bar1, #menu-hamburguer .bar2, #menu-hamburguer .bar3 {
+    width: 20px;
+    height: 4px;
+    background-color: var(--main-color);
+    margin: auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    transition: 0.4s;
+    border-radius: 5px;
+  
+   
+}
+
+.change .bar1 {
+    transform: rotate(-45deg) translate(-5px, 5px);
+    width: 120%;
+    
+}
+
+.change .bar2 {
+    opacity: 0;
+}
+
+.change .bar3 {
+    transform: rotate(45deg) translate(-5px, -5px);
+    width: 120%;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: var(--background-color);
+    color: var(--text-color);
+    
+    font-size: 18px;
+    line-height: 28px;
+
+}
+
+
+header{
+    
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
+    width: 100%;
+    background-color: var(--main-color);
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+    line-height: 1.1;
+}
+
+header>img{
+   display: inline-block ;
+   width: 100px;
+}
+
+header>a>img{
+    display: inline-block ;
+    width: 100px;
+ }
+
+header>a>img:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+main {
+   
+    margin: 0 auto;
+    max-width: 800px;
+
+
+}
+
+
+
+nav button {
+
+    cursor: pointer;
+      
+    min-width: 32px; /* Largura mínima */
+    min-height: 32px; /* Altura mínima */
+    padding: 5px 10px; /* Espaçamento interno */
+    font-size: 16px; /* Tamanho da fonte */
+    border-radius: 20px; /* Borda arredondada */
+    background-color: var(--azul-claro);
+    border: none; /* Sem borda */
+
+   
+
+   
+   
+    margin: 1px 10px 1px 10px;
+    padding: 10px;
+}
+
+nav button:hover {
+   
+    transform: scale(1.02);
+    box-shadow: #ddd 0px 0px 5px 1px;
+    transition: all 0.2s ease-in-out;
+
+
+   
+}
+
+
+nav div ul li {
+    cursor: pointer;
+    margin: 10px;
+    font-size: .875rem;
+    line-height: inherit;
+   
+    list-style-type: none;
+    padding:5px;
+   
+    
+}
+
+nav div ul li:hover{
+    font-weight: bold;
+    transition:all 0.2s;
+}
+
+
+
+
+a{
+    text-decoration: none;
+    color: inherit
+}
+
+li a:hover {
+   
+    text-decoration: underline;
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+
+
+.img-produto{
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+
+}
+
+
+
+.img-produto img{
+    max-width: 45%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
+}
+.img-produto img:hover{
+    z-index: 10;
+    transform: translate(0px, -5px) ;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.overflow{
+    overflow-x: auto;
+    max-width: 90%;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
+}
+
+.tabela-produto{
+    border:solid 2px black;
+    border-collapse:collapse;
+    margin: 1em auto;
+}
+caption{
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 0.5em 0;
+}
+td, th{
+    border:solid 2px black;
+    padding: 8px;
+    text-align: center;
+}
+
+td img{
+    max-width: 70px;
+    height: 30px;
+}
+
+th a {
+    text-decoration: none; /* Remove sublinhado */
+    color: inherit; /* Faz com que a cor do link herde a cor do elemento pai */
+    z-index: 100;
+
+}
+
+th{
+    background-color: #000;
+    color: #fff;
+   border-left: solid 3px #fff;
+    
+}
+
+th a:hover {
+    color: #007bff; /* Cor do link ao passar o mouse */
+    text-decoration: underline; /* Sublinha o link ao passar o mouse */
+}
+
+td>a>img{
+    width: 50px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
+}
+
+td>a>img:hover{
+    transform: scale(1.1);
+    transition: all 0.3s ease-in-out;
+}
+
+th[scope="row"]{
+    position: sticky;
+    left:5px;
+}
+
+td[scope="row"]{
+    position: sticky;
+    left:0px;
+    background-color: var(--background-color);
+    border: solid 2px #000;
+}
+
+
+
+.link{
+    margin: auto;
+    width: 220px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    
+    text-decoration: none;
+    font-size: 1.2rem;
+    border: solid 1px #000;  
+    border-radius: 25px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 1px 1px 2px 0px #0000007c;
+    transition: all 0.3s ease-in-out;
+    text-align: center;
+
+    position: sticky;
+    top: 1px;
+}
+
+.link img{
+   height: 40px;
+    vertical-align: middle;
+    margin: 5px;
+}
+
+.link:hover{
+    background-color: #000;
+    color: #fff;
+    box-shadow: 1px 1px 3px 0px #000000;
+    transform: scale(1.02);
+    transition: all 0.3s ease-in-out;
+}
+
+#clicada{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 90%;
+    max-height: 90%;
+   
+    z-index: 100;
+    width: auto;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 1px 1px 1px 100vmax rgba(0, 0, 0, 0.139);
+}
+
+
+
+
+
+/* Estilo adicional para quando a lista estiver fixa */
+
+
+p {
+    margin: 7px;
+    text-indent: 3em;
+}
+
+ul{
+    padding-left: 15px;
+}
+
+li {
+    margin-left: 2em;
+    margin-top: 10px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    text-align: center;
+    margin: 5px;
+    padding: 3px;
+}
+
+fieldset {
+    
+    width: 90%;
+    margin: auto;
+    border: 1px solid #000;
+    border-radius: 10px;
+    padding: 10px;
+    margin-top: 20px;
+    
+}
+
+
+
+#up-page{
+    background-color: var(--main-color);
+    color: #fff;
+    font-size: 1.5rem;
+    font-weight: bold;
+    height: 45px;
+    width: 45px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 100;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#up-page:hover{
+
+transform: scale(1.02);
+box-shadow: #ddd 0px 0px 5px 1px;
+transition: all 0.2s ease-in-out;
+}
+footer{
+    background-color: yellowgreen;
+    font-size: smaller;
+    text-align: center;
+  
+    bottom: 15px;
+}
+
+html {
+    scroll-behavior: smooth;
+  
+}
