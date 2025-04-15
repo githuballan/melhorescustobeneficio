@@ -171,6 +171,12 @@ vermelho pra seta do carrinho*/
    
 
     }/*min-width: 1100px*/
+#menu-site ul{
+    display: none;
+    position: absolute;
+    text-align: left;
+    background-color: var(--background-color);
+}
 
 #lateral-esquerda{
     background-color: var(--main-color);

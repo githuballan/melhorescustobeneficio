@@ -41,38 +41,7 @@ function mostraMenuAcessoRapido() {
                 }
 }; // Adiciona o evento de clique ao botão de menu hamburguer
 
-function criarMenuHamburguer(){
-    let menuSite = document.getElementById('menu-site');
-    let sumario = document.getElementById('sumario');
-    
-    if (!document.getElementById('menu-site')) {
-        console.warn('menuSite or sumario is not found in the DOM.');
-        return;
-    }
 
-    if (!document.getElementById('sumario')) {
-        console.warn('menuSite or sumario is not found in the DOM.');
-        return;
-    }
-    
-    if (document.getElementById('sumario') || document.getElementById('menu-site')){
-        console.log('ok');
-        let newButton = document.createElement('button');
-        newButton.setAttribute('id', 'menu-hamburguer');
-        newButton.setAttribute('aria-label', 'Abrir menu de acesso rápido');
-        newButton.innerHTML = `
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>`;
-        menuSite.insertBefore(newButton, menuSite.firstChild);
-       
-        newButton.addEventListener('click', () => {
-            console.log('Menu hamburguer clicado');
-            mostraMenuAcessoRapido();
-            toggleMenu(newButton);
-        });
-    }
-}// Cria o botão de menu hamburguer e adiciona o evento de clique. Antes de criar o botão, verifica se o menu site e o sumário existem na página.
 
   function toggleMenu(x) {
     x.classList.toggle("change");
@@ -101,10 +70,104 @@ window.addEventListener('resize', () => {
     }
 });
 
+function criarMenuHamburguer(){
+    let menuSite = document.getElementById('menu-site');
+    let sumario = document.getElementById('sumario');
+    
+    if (!document.getElementById('menu-site')) {
+        console.warn('menuSite is not found in the DOM.');
+        return;
+    }
+
+    if (!document.getElementById('sumario')) {
+        console.warn('sumario is not found in the DOM.');
+        return;
+    }
+    
+    if (document.getElementById('sumario') || document.getElementById('menu-site')){
+        console.log('ok');
+        let newButton = document.createElement('button');
+        newButton.setAttribute('id', 'menu-hamburguer');
+        newButton.setAttribute('aria-label', 'Abrir menu de acesso rápido');
+        newButton.innerHTML = `
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>`;
+        menuSite.insertBefore(newButton, menuSite.firstChild);
+       
+        newButton.addEventListener('click', () => {
+            console.log('Menu hamburguer clicado');
+            mostraMenuAcessoRapido();
+            toggleMenu(newButton);
+        });
+    }
+}// Cria o botão de menu hamburguer e adiciona o evento de clique. Antes de criar o botão, verifica se o menu site e o sumário existem na página.
+
+function criarDivsMenu(menuSiteId, menus) {
+    const menuSite = document.getElementById(menuSiteId);
+
+    if (!menuSite) {
+        console.warn(`Elemento com o ID "${menuSiteId}" não foi encontrado.`);
+        return;
+    }
+
+    menus.forEach(menu => {
+        const div = document.createElement('div');
+        div.id = menu.id;
+
+        const button = document.createElement('button');
+        button.textContent = menu.nome;
+
+        div.appendChild(button);
+        menuSite.appendChild(div);
+    });
+}
+
+// Função para criar links dinamicamente
+function criarLinks(menuId, paginas) {
+    const menu = document.getElementById(menuId);
+    const ul = document.createElement('ul');
+   
+
+    paginas.forEach(pagina => {
+        const li = document.createElement('li');
+        const link = document.createElement('a');
+        link.href = pagina.url;
+        link.textContent = pagina.nome;
+        li.appendChild(link);
+        ul.appendChild(li);
+    });
+
+    menu.appendChild(ul);
+
+    // Adiciona eventos para exibir/ocultar o menu
+    menu.onmouseover = () => ul.style.display = 'block';
+    menu.onmouseleave = () => ul.style.display = 'none';
+}
+
+// Exemplo de uso
+
+
 document.addEventListener('DOMContentLoaded', () => {
     fechaMenuAcessoRapido();
     expandirImagem();
     criarMenuHamburguer();
+    criarDivsMenu('menu-site', [
+        { id: 'menu-fitness', nome: 'Fitness' },
+        { id: 'menu-tecnologias', nome: 'Tecnologias' },
+        { id: 'menu-cozinha', nome: 'Cozinha' } // Exemplo de um novo menu
+    ]);
+
+    criarLinks('menu-fitness', [
+        { nome: 'Whey', url: '/fitness/whey.html' },
+        { nome: 'Creatina', url: '/fitness/creatina.html' },
+        { nome: 'Pré-treinos em contrução', url: '#' }
+    ]);
+
+    criarLinks('menu-tecnologias', [
+        { nome: 'Em Breve!', url: '#' },
+       
+    ]);
     
 
  
