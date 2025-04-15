@@ -363,11 +363,12 @@ li a:hover {
 
 
 .img-produto{
-    width: 80%;
-    margin: 0 auto;
+    width: 90%;
+    height: auto;
+    margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin: 10px;
 
@@ -563,7 +564,7 @@ fieldset {
 
 
 
-#up-page{
+/* #up-page{
     background-color: var(--main-color);
     color: #fff;
     font-size: 1.5rem;
@@ -585,7 +586,7 @@ fieldset {
 transform: scale(1.02);
 box-shadow: #ddd 0px 0px 5px 1px;
 transition: all 0.2s ease-in-out;
-}
+} */
 footer{
     background-color: yellowgreen;
     font-size: smaller;

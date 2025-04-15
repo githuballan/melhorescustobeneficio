@@ -41,6 +41,30 @@ function mostraMenuAcessoRapido() {
                 }
 }; // Adiciona o evento de clique ao botão de menu hamburguer
 
+function criarTituloDoSumario(){
+    
+    let conteinerSumario = document.getElementById('sumario');
+    if (!conteinerSumario) {
+        console.warn('Conteiner do sumário não encontrado.');
+        return;
+    }
+    console.log(conteinerSumario);
+    let titleSumario = document.createElement('h3');
+    titleSumario.innerHTML = 'Sumário';
+    titleSumario.setAttribute('id', 'title-sumario');
+    conteinerSumario.insertBefore(titleSumario, conteinerSumario.firstChild); // Adiciona o título do sumário antes do primeiro filho do sumário
+
+    let retornarAoTopo = document.createElement('a');
+    let newLi = document.createElement('li');
+    let shortcuts=document.getElementById('shortcuts')
+    retornarAoTopo.setAttribute('id', 'up-page');
+    retornarAoTopo.setAttribute('href', '#');
+    retornarAoTopo.innerHTML='Voltar ao topo'; 
+    newLi.appendChild(retornarAoTopo);
+    shortcuts.appendChild(newLi);
+    //
+
+}
 
 
   function toggleMenu(x) {
@@ -176,9 +200,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     fechaMenuAcessoRapido();
     expandirImagem();
+    criarTituloDoSumario()
     criarNavMenuSite();
     criarMenuHamburguer();
     criarLogoLink();
+    
     criarDivsMenu('menu-site', [
         { id: 'menu-fitness', nome: 'Fitness' },
         { id: 'menu-tecnologias', nome: 'Tecnologias' },
@@ -196,6 +222,10 @@ document.addEventListener('DOMContentLoaded', () => {
        
     ]);
     
+    criarLinks('menu-cozinha', [
+        { nome: 'Em Breve!', url: '#' },
+       
+    ]);
 
  
 });
@@ -237,6 +267,7 @@ function expandirImagem(){
 };
 
 function fechaMenuAcessoRapido() {
+    if(innerWidth > 1099) return; // Não fecha o menu se a tela for maior que 1099px
     document.querySelectorAll('#shortcuts a').forEach((link) => {
         link.addEventListener('click', () => {
             document.getElementById('menu-hamburguer').click();
