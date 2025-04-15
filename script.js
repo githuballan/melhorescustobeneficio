@@ -9,7 +9,7 @@ function esconder(x){
 
 function mostraMenuAcessoRapido() {
 
-    let menuEsquerda = document.getElementById('menu-lateral-esquerda');
+    let menuEsquerda = document.getElementById('sumario');
     let lateralEsquerda = document.getElementById('lateral-esquerda');
     let header = document.getElementsByTagName('header')[0];
     let scrollY = window.scrollY; // Pega a posição do scroll Y
@@ -59,32 +59,48 @@ function mostraMenuAcessoRapido() {
 //     }
 // }// Chama a função para exibir a saudação
 
+function atualizarPagina() {
+    location.reload();
+}
+// Atualiza a página quando o tamanho da tela é alterado
+let larguraAnterior = window.innerWidth; // Armazena a largura inicial da tela
+
 window.addEventListener('resize', () => {
-   
-    let menuEsquerda = document.getElementById('menu-lateral-esquerda');
+    const larguraAtual = window.innerWidth;
 
-    if(window.innerWidth > 1099) {
-        menuEsquerda.style.display = 'block'; // Exibe o menu lateral esquerda ao redimensionar a tela}
-    }else{
-        menuEsquerda.style.display = 'none'; // Oculta o menu lateral esquerda ao redimensionar a tela
+    // Verifica se houve uma mudança de faixa
+    if ((larguraAnterior <= 1099 && larguraAtual > 1099) || (larguraAnterior > 1099 && larguraAtual <= 1099)) {
+        console.log('Tamanho da tela alterado. Atualizando a página...');
+        atualizarPagina();
     }
-});
 
+    // Atualiza a largura anterior
+    larguraAnterior = larguraAtual;
+});
+// menuSite.insertBefore(novoElemento, menuSite.firstChild.nextSibling); // Adiciona o novo elemento antes do segundo filho do menuSite
+
+function criarNavMenuSite(){
+    let navMenuSite = document.createElement('nav');
+    navMenuSite.setAttribute('id', 'menu-site');
+    navMenuSite.setAttribute('aria-label', 'Menu de navegação do site');
+  
+    document.body.insertBefore(navMenuSite, document.body.firstChild.nextSibling); // Adiciona o menu de navegação ao início do body após o header
+}
 function criarMenuHamburguer(){
     let menuSite = document.getElementById('menu-site');
     let sumario = document.getElementById('sumario');
     
-    if (!document.getElementById('menu-site')) {
+    if (!menuSite) {
         console.warn('menuSite is not found in the DOM.');
         return;
     }
 
-    if (!document.getElementById('sumario')) {
+    if (!sumario) {
         console.warn('sumario is not found in the DOM.');
         return;
     }
     
-    if (document.getElementById('sumario') || document.getElementById('menu-site')){
+    if (sumario || menuSite){
         console.log('ok');
         let newButton = document.createElement('button');
         newButton.setAttribute('id', 'menu-hamburguer');
@@ -146,12 +162,23 @@ function criarLinks(menuId, paginas) {
 }
 
 // Exemplo de uso
+function criarLogoLink() {
+    const logoLink = document.createElement('a');
+    let header =  document.getElementById('header-topo');
+    logoLink.href = '/index.html'; // URL do link
+    logoLink.innerHTML = '<img src="/favicon.png" alt="Logo da página">'; // Imagem do logo
+    logoLink.id = 'logo-link'; // ID opcional para estilização
+    header.insertBefore(logoLink, header.firstChild); // Adiciona o logo ao header
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
+    
     fechaMenuAcessoRapido();
     expandirImagem();
+    criarNavMenuSite();
     criarMenuHamburguer();
+    criarLogoLink();
     criarDivsMenu('menu-site', [
         { id: 'menu-fitness', nome: 'Fitness' },
         { id: 'menu-tecnologias', nome: 'Tecnologias' },
@@ -220,7 +247,7 @@ function fechaMenuAcessoRapido() {
 let lastScrollY = window.scrollY;
 
 function toggleMenuSiteOnScroll() {
-    let menuEsquerda = document.getElementById('menu-lateral-esquerda');
+    let menuEsquerda = document.getElementById('sumario');
     
     if (window.innerWidth <= 1099) {
         const menuSite = document.getElementById('menu-site');
@@ -247,7 +274,7 @@ fecharSumarioScroll();
 
 function fecharSumarioScroll(){
    
-    if(document.getElementById('menu-lateral-esquerda').style.display==='block' &&  window.innerWidth <= 1099){
+    if(document.getElementById('sumario').style.display==='block' &&  window.innerWidth <= 1099){
     document.getElementById('menu-hamburguer').click();}
 }//Essa função existe para evitar desalinhamento entre o sumario e a nav#menu-site
 
