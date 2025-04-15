@@ -83,7 +83,7 @@ function criarMenuHamburguer(){
 //     let hora = new Date().getHours();
 //     if (hora >= 0 && hora < 12) {
 //         saudacao.innerHTML = "Bom dia!";
-//     } else if (hora >= 12 &&Hora<18) {
+//     } else if (hora >= 12 && hora<18) {
 //         saudacao.innerHTML = "Boa tarde!";
 //     } else {
 //         saudacao.innerHTML = "Boa noite!";

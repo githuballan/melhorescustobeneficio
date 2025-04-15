@@ -424,44 +424,45 @@ caption{
     font-weight: bold;
     margin: 0.5em 0;
 }
-td, th{
+.tabela-produto td, th{
     border:solid 2px black;
     padding: 8px;
     text-align: center;
 }
 
-td img{
+.tabela-produto td img{
     max-width: 70px;
     height: 30px;
 }
 
-th a {
+.tabela-produto th a {
     text-decoration: none; /* Remove sublinhado */
     color: inherit; /* Faz com que a cor do link herde a cor do elemento pai */
     z-index: 100;
 
 }
 
-th{
-    background-color: #000;
+.tabela-produto th{
+    background-color: var(--secondary-color);
     color: #fff;
    border-left: solid 3px #fff;
     
 }
 
-th a:hover {
-    color: #007bff; /* Cor do link ao passar o mouse */
+.tabela-produto th a:hover {
+     /* Cor do link ao passar o mouse */
     text-decoration: underline; /* Sublinha o link ao passar o mouse */
+    
 }
 
-td>a>img{
+.tabela-produto td img{
     width: 50px;
     height: auto;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
 }
 
-td>a>img:hover{
+.tabela-produto td img:hover{
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
@@ -510,7 +511,7 @@ td[scope="row"]{
 }
 
 .link:hover{
-    background-color: #000;
+    background-color: var(--main-color);
     color: #fff;
     box-shadow: 1px 1px 3px 0px #000000;
     transform: scale(1.02);
@@ -556,6 +557,14 @@ h1, h2, h3, h4, h5, h6 {
     text-align: center;
     margin: 5px;
     padding: 3px;
+}
+
+h2{
+    font-size: 2rem;
+    font-weight: bold;
+    color: #000;
+    margin: 15px;
+
 }
 
 fieldset {
