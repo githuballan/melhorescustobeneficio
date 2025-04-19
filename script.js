@@ -1,4 +1,3 @@
-
 function exibir(x) {
     x.nextElementSibling.style.display = "block";
 }
@@ -197,13 +196,17 @@ function criarLogoLink() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    
+    carrocel();
+    criarNavMenuSite();
     fechaMenuAcessoRapido();
     expandirImagem();
     criarTituloDoSumario()
-    criarNavMenuSite();
     criarMenuHamburguer();
     criarLogoLink();
+   
+    if(document.getElementById('sumario') && window.innerWidth <= 1099){
+        document.getElementById('sumario').style.display = 'none'; // Esconde o sumário se a tela for menor que 1099px
+    } //Gambiarra para esconder o sumário quando a tela é menor que 1099px, estudar o que está acontecendo.
     
     criarDivsMenu('menu-site', [
         { id: 'menu-fitness', nome: 'Fitness' },
@@ -214,7 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
     criarLinks('menu-fitness', [
         { nome: 'Whey', url: '/fitness/whey.html' },
         { nome: 'Creatina', url: '/fitness/creatina.html' },
-        { nome: 'Pré-treinos em contrução', url: '#' }
+        { nome: 'Pré-treinos', url: '/fitness/termogenico.html' }
     ]);
 
     criarLinks('menu-tecnologias', [
@@ -227,7 +230,7 @@ document.addEventListener('DOMContentLoaded', () => {
        
     ]);
 
- 
+  
 });
 window.addEventListener('click', (event) => {
         fecharImagem();
@@ -241,6 +244,72 @@ function fecharImagem() {
     }
 };//aumenta a imagem quando clicada e fecha a imagem quando clica fora dela
     
+function carrocel() {
+    if(!document.querySelector('.carousel')) return; // Verifica se o elemento existe antes de continuar
+
+    const track = document.querySelector('.carousel-track');
+    const items = Array.from(track.children); //cada li do carroucel Converte a NodeList em um array para usar métodos de array
+    const prevButton = document.querySelector('.carousel-control.prev');
+    const nextButton = document.querySelector('.carousel-control.next');
+    const itemWidth = items[0].getBoundingClientRect().width;// Pega a largura do primeiro item do carrossel
+
+  
+    // Arrange items side by side
+    items.forEach((item, index) => {
+        item.style.left = `${itemWidth * index}px`; 
+        console.log('index: '+index);
+        console.log('item: '+items);
+        console.log('itemWidth: '+itemWidth);
+
+    });// Coloca os itens lado a lado, multiplicando a largura do item pelo índice do item
+
+    let currentIndex = 0;
+
+    const moveToItem = (index) => {
+        track.style.transform = `translateX(-${itemWidth * index}px)`;
+        currentIndex = index;
+    };// Move o carrossel para o item selecionado, aplicando uma transformação CSS para mover o carrossel para a esquerda
+
+    prevButton.addEventListener('click', () => {
+        console.log('prevButton clicked');
+        if (currentIndex > 0) {
+            moveToItem(currentIndex - 1);
+        }
+    });
+
+    nextButton.addEventListener('click', () => {
+        if (currentIndex < items.length - 1) {
+            moveToItem(currentIndex + 1);
+        } else {
+            // Volta ao início se estiver no último item
+            moveToItem(0);
+        }
+    });
+
+let w = 0; // Declara e inicializa a variável w
+let backup = 0; // Declara e inicializa a variável backup
+
+const autoCarousel = () => {
+    let vezes = 101; // Reinicia a variável w a cada chamada da função
+    let tempo = 4000; // Tempo em milissegundos (3 segundos)
+  
+    if (w < vezes) {
+        document.querySelector('.carousel-control.next').click(); // Clica no botão "next" para iniciar o carrossel automaticamente
+        
+        w++;
+        backup++;
+        if (backup > 50) {
+            console.log("break");
+            return;
+        }
+        setTimeout(autoCarousel, tempo); // Chama a função novamente após 1 segundo
+    }
+};
+
+autoCarousel(); // Inicia o carrossel automaticamente
+
+}
+
 function expandirImagem(){
     // Adiciona um evento de clique a cada imagem selecionada
     const imagens = document.querySelectorAll('.img-produto img');
@@ -279,26 +348,23 @@ let lastScrollY = window.scrollY;
 
 function toggleMenuSiteOnScroll() {
     let menuEsquerda = document.getElementById('sumario');
-    
+
     if (window.innerWidth <= 1099) {
         const menuSite = document.getElementById('menu-site');
         if (!menuSite) return;
 
         if (window.scrollY < lastScrollY || menuEsquerda.style.display==='block') {
-            // Scroll para baixo - recolhe o menu
-              menuSite.style.position = 'sticky';
-            menuSite.style.top = '0';
-
-        } else {menuSite.style.position = 'static ';
+            menuSite.setAttribute('class', 'menu-site-scroll-exibir'); 
+        } else { menuSite.setAttribute('class', '');
             // Scroll para cima - exibe o menu
-          
-        }
+             }
 
         lastScrollY = window.scrollY;
     }
 }//exibe o nav menu site quando o scroll é para baixo e esconde quando o scroll é para cima
 
-window.addEventListener('scroll', () => { toggleMenuSiteOnScroll();
+window.addEventListener('scroll', () => { 
+toggleMenuSiteOnScroll();
 fecharSumarioScroll();
     
 });
@@ -309,7 +375,7 @@ function fecharSumarioScroll(){
     document.getElementById('menu-hamburguer').click();}
 }//Essa função existe para evitar desalinhamento entre o sumario e a nav#menu-site
 
-   
+
 
 
 

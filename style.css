@@ -38,10 +38,25 @@ vermelho pra seta do carrinho*/
     }
 
     main{
-       
        width: 95%;
+    }
+
+    header{
+      order: -2;
+    }
+  
+
+    .menu-site-scroll-exibir{
+        position: sticky;
+        top: 0;
+        transform: translateY(0);
+        transition: all 1s ease-in-out;
+        z-index: 110;
        
     }
+    
+
+
 
     #sumario{
         display: none;
@@ -71,14 +86,13 @@ vermelho pra seta do carrinho*/
         align-self: flex-start;
         }
 
-    #menu-site {
-        z-index: 120;
+    #menu-site{
         justify-content: space-evenly;
         align-items: center;
         flex-wrap: nowrap;
-       
+        order: -1;
     }
-    
+     
 
     h1, h2, h3, h4, h5, h6 {
         text-align: center;
@@ -104,7 +118,7 @@ vermelho pra seta do carrinho*/
         gap: 0px;
         padding: 0px;
     }
-    #menu-site {
+    #menu-site{
         grid-area: nav;
         justify-content: center;
         align-items: center;
@@ -112,10 +126,7 @@ vermelho pra seta do carrinho*/
         
     }
 
-    #menu-site div{
-        margin: 0px 5px 0px 5px;
-        
-    }
+   
 
     header{
         grid-area: header;
@@ -176,6 +187,14 @@ vermelho pra seta do carrinho*/
     position: absolute;
     text-align: left;
     background-color: var(--background-color);
+    border: #000 solid 1px;
+}
+
+#menu-site div{
+    margin: 0px 5px 0px 5px;
+ 
+    
+    
 }
 
 #lateral-esquerda{
@@ -198,14 +217,14 @@ main {
     max-width: 800px;
      /* Ajusta para ocupar toda a largura disponível */
 }
-#menu-site {
+#menu-site{
     width: 100%;
     display: flex;
     flex-direction: row;
    
     background-color: var(--secondary-color);
     padding: 10px 0;
-    transition: all 0.5s linear;
+    
    
 }
 
@@ -543,12 +562,25 @@ h1, h2, h3, h4, h5, h6 {
     padding: 3px;
 }
 
+h1{
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 20px;
+}
+
 h2{
     font-size: 2rem;
     font-weight: bold;
     color: #000;
-    margin: 15px;
+    margin: 40px 20px 40px 20px;
 
+}
+
+h3{
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 20px 20px 20px;
 }
 
 fieldset {
@@ -588,7 +620,7 @@ box-shadow: #ddd 0px 0px 5px 1px;
 transition: all 0.2s ease-in-out;
 } */
 footer{
-    background-color: yellowgreen;
+    background-color: #9acd32;
     font-size: smaller;
     text-align: center;
   
@@ -598,4 +630,69 @@ footer{
 html {
     scroll-behavior: smooth;
   
+}
+
+.carousel {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    max-width: 800px;
+    margin: 100px auto;
+}
+
+.carousel *{
+margin: 0;
+padding: 0;
+border: 0;
+box-sizing: border-box;
+}
+
+.carousel-track-container {
+    position: relative;
+    overflow: hidden;
+   
+ 
+}
+
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    min-width: 100%;/* sempre deve ser 100% pois se mudar deverá modificar a função corroucel no JS*/
+    text-align: center;
+    list-style: none;
+    padding: 20px 0;
+}
+
+.carousel-item img {
+    max-width: 100%;
+    height: 30vh;
+    border-radius: 8px;
+}
+
+.carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.carousel-control.prev {
+    left: 10px;
+}
+
+.carousel-control.next {
+    right: 10px;
+}
+
+.carousel-control:hover {
+    background-color: rgba(0, 0, 0, 0.8);
 }
