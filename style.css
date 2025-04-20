@@ -113,7 +113,7 @@ vermelho pra seta do carrinho*/
         "nav nav nav"
         "lateral-esquerda main lateral-direita"
         "footer footer footer";
-        grid-template-columns: 2fr 6fr 2fr;
+        grid-template-columns: 2fr 6fr 1fr;
         grid-template-rows: auto auto auto auto;
         gap: 0px;
         padding: 0px;
@@ -212,10 +212,16 @@ vermelho pra seta do carrinho*/
 
 
 
-main {
-    display: block;
-    max-width: 800px;
-     /* Ajusta para ocupar toda a largura disponível */
+main { 
+    margin: 0 auto;
+    max-width: 850px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+
+   
 }
 #menu-site{
     width: 100%;
@@ -306,13 +312,7 @@ header>a>img:hover{
     transition: all 0.3s ease-in-out;
 }
 
-main {
-   
-    margin: 0 auto;
-    max-width: 800px;
 
-
-}
 
 
 
