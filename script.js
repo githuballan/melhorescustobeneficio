@@ -205,19 +205,19 @@ document.addEventListener('DOMContentLoaded', () => {
     criarLogoLink();
    
     if(document.getElementById('sumario') && window.innerWidth <= 1099){
-        document.getElementById('sumario').style.display = 'none'; // Esconde o sumário se a tela for menor que 1099px
+        document.getElementById('sumario').style.display = 'none'; 
     } //Gambiarra para esconder o sumário quando a tela é menor que 1099px, estudar o que está acontecendo.
     
     criarDivsMenu('menu-site', [
         { id: 'menu-fitness', nome: 'Fitness' },
         { id: 'menu-tecnologias', nome: 'Tecnologias' },
-        { id: 'menu-cozinha', nome: 'Cozinha' } // Exemplo de um novo menu
+        { id: 'menu-utilidade', nome: 'Utilidades' } // Exemplo de um novo menu
     ]);
 
     criarLinks('menu-fitness', [
         { nome: 'Whey', url: '/fitness/whey.html' },
         { nome: 'Creatina', url: '/fitness/creatina.html' },
-        { nome: 'Pré-treinos', url: '/fitness/termogenico.html' }
+        { nome: 'Pré-treinos', url: '/fitness/pre-treino.html' }
     ]);
 
     criarLinks('menu-tecnologias', [
@@ -225,8 +225,8 @@ document.addEventListener('DOMContentLoaded', () => {
        
     ]);
     
-    criarLinks('menu-cozinha', [
-        { nome: 'Em Breve!', url: '#' },
+    criarLinks('menu-utilidade', [
+        { nome: 'Copos e garrafas térmicas', url: '#' },
        
     ]);
 
