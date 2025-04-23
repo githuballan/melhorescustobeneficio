@@ -226,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]);
     
     criarLinks('menu-utilidade', [
-        { nome: 'Copos e garrafas térmicas', url: '#' },
+        { nome: 'Copos e garrafas térmicas', url: '/utilidades/copo-termico.html' },
        
     ]);
 
