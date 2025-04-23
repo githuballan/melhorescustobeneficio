@@ -58,6 +58,7 @@ function criarTituloDoSumario(){
     let shortcuts=document.getElementById('shortcuts')
     retornarAoTopo.setAttribute('id', 'up-page');
     retornarAoTopo.setAttribute('href', '#');
+    retornarAoTopo.style.fontWeight='bold';
     retornarAoTopo.innerHTML='Voltar ao topo'; 
     newLi.appendChild(retornarAoTopo);
     shortcuts.appendChild(newLi);
