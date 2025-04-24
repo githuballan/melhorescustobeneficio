@@ -23,10 +23,14 @@ vermelho pra seta do carrinho*/
     --azul-claro:#A8DADC;
     --text-color: #343a40;
     --font-family: 'Lexend', sans-serif;
+    --footer-color: #9acd32;
 }
 
 @media only screen and (max-width: 1099px){
-
+    html{
+        font-size: 90%;
+    }
+    
 
     body{
         display: flex;
@@ -35,10 +39,13 @@ vermelho pra seta do carrinho*/
         align-items: center;
         flex-wrap: nowrap;
         margin: 0 auto;
+       
+        
     }
 
     main{
-       width: 95%;
+       width: 100%;
+       
     }
 
     header{
@@ -61,6 +68,7 @@ vermelho pra seta do carrinho*/
     #sumario{
         display: none;
         max-height: 90vh;
+        padding: 10px;
     }
     #lateral-esquerda{
         z-index: 110;
@@ -82,8 +90,8 @@ vermelho pra seta do carrinho*/
     
 
     #menu-hamburguer {
-        display: block;
-        align-self: flex-start;
+        display: flex;
+       
         }
 
     #menu-site{
@@ -92,6 +100,23 @@ vermelho pra seta do carrinho*/
         flex-wrap: nowrap;
         order: -1;
      
+    }
+
+    #destaques-index{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
+        padding-bottom: 500px;
+     
+        width: 100%;
+    }
+    
+
+    .card-index{
+        width: 95%;
+        margin: 10px;
     }
      
 
@@ -134,6 +159,7 @@ vermelho pra seta do carrinho*/
     }
     main{
         grid-area: main;
+        max-width: 800px;
       
     }
     footer{
@@ -180,7 +206,21 @@ vermelho pra seta do carrinho*/
             margin-right: 10px;
             padding: 10px;
         }
-       
+
+        #destaques-index{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: space-between;
+            flex-wrap: wrap;
+            padding-bottom: 500px;
+         
+            width: 100%;
+        }
+        
+        .card-index{
+            width: 48%;
+        }
         /* #menu-site{
             position: sticky;
             top: 0;
@@ -196,11 +236,12 @@ vermelho pra seta do carrinho*/
     text-align: left;
     background-color: var(--background-color);
     border: #000 solid 1px;
+    z-index: 100;
 }
 
 #menu-site div{
     margin: 0px 5px 0px 5px;
- 
+    
     
     
 }
@@ -217,20 +258,88 @@ vermelho pra seta do carrinho*/
     overflow-y: auto;
 }
 
+#sumario li{
+   margin: 10px 0px 10px 0px;
+    text-decoration: none;
+    list-style: none;
+
+}
+
 
 
 main { 
     margin: 0 auto;
-    max-width: 850px;
+  
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: stretch;
-    flex-wrap: nowrap;
+    align-items: center;
+    flex-wrap: wrap;
     padding-bottom: 500px;
+    padding-top: 20px;
+}
 
+#main-index{
+    max-width: 1000px;
+
+}
+
+.texto-markenting{
+    margin: 5px 10px 0px 10px;
+    padding:10px ; 
    
 }
+
+#ofertas-do-dia{
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: bold;
+    outline: solid 1px #000;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    margin: 20px 0px;
+    border-bottom-width: 6px; 
+    border-bottom-style: solid; 
+    border-bottom-color: var(--footer-color);
+}
+
+#ofertas-do-dia .texto-markenting{
+    font-size: 2rem; 
+    text-align: center;
+}
+
+
+.card-index{
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.3rem;
+    outline: solid 1px #000;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    margin: 20px 0px;
+    border-bottom-width: 6px; 
+    border-bottom-style: solid; 
+    border-bottom-color: #ffd002;
+
+}
+
+.card-index img{
+    width: 100%;
+    border-radius: inherit;
+}
+
+.card-index .texto-markenting{
+    font-size: larger;
+}
+
+.card-index:hover{
+    transform: scale(1.02);
+    box-shadow: #ddd 0px 0px 5px 1px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
 #menu-site{
     width: 100%;
     display: flex;
@@ -246,16 +355,21 @@ main {
 #menu-hamburguer {
     cursor: pointer;
     border: solid 0px #000;
-    border-radius: 5px;
+   border-radius: 3px;
+   bottom: 0px;
     width: auto;
-    height: auto;
+    align-self: flex-end;
+    font-variant:titling-caps;
     padding: 5px;
-    background-color: #ffffff00;
+    background-color: var(--secondary-color);
+    font-weight: bold;
+    flex-direction: row;
+    box-shadow: none;
     
     
 }
 
-#menu-hamburguer .bar1, #menu-hamburguer .bar2, #menu-hamburguer .bar3 {
+/* #menu-hamburguer .bar1, #menu-hamburguer .bar2, #menu-hamburguer .bar3 {
     width: 20px;
     height: 4px;
     background-color: var(--main-color);
@@ -266,22 +380,17 @@ main {
     border-radius: 5px;
   
    
+} */
+
+.seta{
+    transform: rotate(270deg);
+    transition: all 0.3s ease-in-out;
 }
 
-.change .bar1 {
-    transform: rotate(-45deg) translate(-5px, 5px);
-    width: 120%;
-    
+.change .seta  {
+    transform: rotate(90deg)
 }
 
-.change .bar2 {
-    opacity: 0;
-}
-
-.change .bar3 {
-    transform: rotate(45deg) translate(-5px, -5px);
-    width: 120%;
-}
 
 body {
     font-family: var(--font-family);
@@ -300,7 +409,7 @@ header{
     width: 100%;
     background-color: var(--main-color);
     color: white;
-    padding: 20px 0;
+    padding-top: 20px;
     text-align: center;
     line-height: 1.1;
 }
@@ -537,6 +646,7 @@ td[scope="row"]{
     transform: translate(-50%, -50%);
     max-width: 90%;
     max-height: 90%;
+    margin: auto;
    
     z-index: 100;
     width: auto;
@@ -575,7 +685,6 @@ h1, h2, h3, h4, h5, h6 {
 h1{
     font-size: 2.5rem;
     font-weight: bold;
-    margin: 20px;
 }
 
 h2{
@@ -647,8 +756,10 @@ html {
     position: relative;
     overflow: hidden;
     width: 100%;
-    max-width: 800px;
-    margin: 100px auto;
+    margin: auto;
+    background-color: #fff;
+    border-radius: inherit;
+
 }
 
 .carousel *{
@@ -676,6 +787,13 @@ box-sizing: border-box;
     text-align: center;
     list-style: none;
     padding: 20px 0;
+    color: #000;
+    background-color: #457b9d2c;
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;    
+    flex-direction: row;
 }
 
 .carousel-item img {

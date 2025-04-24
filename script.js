@@ -49,7 +49,7 @@ function criarTituloDoSumario(){
     }
     console.log(conteinerSumario);
     let titleSumario = document.createElement('h3');
-    titleSumario.innerHTML = 'Sumário';
+    titleSumario.innerHTML = 'Índice';
     titleSumario.setAttribute('id', 'title-sumario');
     conteinerSumario.insertBefore(titleSumario, conteinerSumario.firstChild); // Adiciona o título do sumário antes do primeiro filho do sumário
 
@@ -130,9 +130,9 @@ function criarMenuHamburguer(){
         newButton.setAttribute('id', 'menu-hamburguer');
         newButton.setAttribute('aria-label', 'Abrir menu de acesso rápido');
         newButton.innerHTML = `
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>`;
+        <div>Índice</div>
+        <div class="seta">&#10094;</div>
+        `;
         menuSite.insertBefore(newButton, menuSite.firstChild);
        
         newButton.addEventListener('click', () => {
