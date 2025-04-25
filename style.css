@@ -86,8 +86,7 @@ vermelho pra seta do carrinho*/
         flex-wrap: nowrap;
     }
 
-  
-    
+   
 
     #menu-hamburguer {
         display: flex;
@@ -102,7 +101,7 @@ vermelho pra seta do carrinho*/
      
     }
 
-    #destaques-index{
+    #destaques-index {
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -112,8 +111,54 @@ vermelho pra seta do carrinho*/
      
         width: 100%;
     }
-    
 
+    .carousel-item-index{
+        display: flex;
+        justify-content: space-around;
+        align-items: space-between;    
+        flex-direction: column; 
+        text-align: center;
+        flex-wrap: nowrap;
+
+        height: 400px;
+    }
+
+   .carousel-item-index img{
+        height: 50%;
+        width: auto;
+        border-radius: inherit;
+        order: -1;
+        margin: auto;
+    }
+    .texto-carousel{
+        width: 100%;
+       
+        h3{ 
+           
+            height: 25px;
+            font-size: 1em;
+            overflow: hidden;
+        }
+        .descricao{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            height: 60px;
+            font-size: 0.8em;
+            line-height: 1.5em;
+            width: 100%;
+        }     
+    }
+
+
+    #lateral-direita {
+        width: 100%;
+        
+     }
+     
+
+   
     .card-index{
         width: 95%;
         margin: 10px;
@@ -168,7 +213,8 @@ vermelho pra seta do carrinho*/
     
     #shortcuts{
         transition: all 0.5s linear;
-       
+        height: 100%;
+        overflow-y: auto;
     }
 
     #shortcuts li{
@@ -189,23 +235,33 @@ vermelho pra seta do carrinho*/
         align-items: center;
         flex-wrap: nowrap;
         }
+
+        #lateral-direita{
+            grid-area: lateral-direita;
+            width: 400px;
+           
+        }
        
       
-           
+   
         #sumario{
             position: sticky;
             top: 20px;
-            margin-top: 20px;
+           
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-end;
             align-items: center;
-            flex-wrap: nowrap; /*Se permitir a quebra o título vem parar na lateral caso o conteiner fique curto*/
+            flex-wrap: nowrap; 
             margin-top: 20px;
             margin-left: 10px;
             margin-right: 10px;
             padding: 10px;
-        }
+            max-height: 90vh;
+            overflow-y: auto;
+         
+             } 
+        
 
         #destaques-index{
             display: flex;
@@ -221,6 +277,51 @@ vermelho pra seta do carrinho*/
         .card-index{
             width: 48%;
         }
+
+       #destaques-index .carousel-item-index{
+            display: flex;
+            justify-content: space-around;
+            align-items: space-between;    
+            flex-direction: row; 
+            text-align: center;
+            height: 350px;
+        }
+
+       #destaques-index .carousel-item-index img{
+           
+            max-width: 45%;
+            height: auto;
+            border-radius: inherit;
+            order: 1;
+          
+        }
+
+       #destaques-index .texto-carousel{
+            width: 48%;
+
+            h3{
+                font-size: 1.5em;
+                height: 80px;
+            }
+
+            .descricao{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                font-size: 1em;
+                height: 135px;
+               
+        }}
+
+        
+      
+
+       
+
+       #destaques-index .carousel-item-index .por{
+           font-weight: 300;
+        }
         /* #menu-site{
             position: sticky;
             top: 0;
@@ -228,6 +329,60 @@ vermelho pra seta do carrinho*/
             transition: all 1s ease-in-out;
             z-index: 110;
         } */
+
+
+       #lateral-direita .carousel-item-index{
+            display: flex;
+            justify-content: space-around;
+            align-items: space-between;    
+            flex-direction: column; 
+            text-align: center;
+            height: auto;
+        }
+
+      #lateral-direita .carousel-item-index img{
+           
+            max-width: 95%;
+            height: auto;
+            border-radius: inherit;
+            order: -1;
+          
+        }
+
+      #lateral-direita .texto-carousel{
+            width: 95%;
+
+            h3{
+                font-size: 1.5em;
+                height: 80px;
+            }
+
+            .descricao{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                overflow: hidden;
+                font-size: 1em;
+                height: 135px;
+               
+        }}
+
+        
+    #lateral-direita #ofertas-do-dia{
+        position: sticky;
+        top: 10px;
+      }
+      
+
+       
+
+      #lateral-direita .carousel-item-index .por{
+           font-weight: 300;
+        }
+
+     
+
+
 
     }/*min-width: 1100px*/
 #menu-site ul{
@@ -242,20 +397,23 @@ vermelho pra seta do carrinho*/
 #menu-site div{
     margin: 0px 5px 0px 5px;
     
-    
-    
 }
 
-#lateral-esquerda{
+#lateral-esquerda {
     background-color: var(--main-color);
    
 }
 
+/* #lateral-direita {
+  
+   
+} */
 
-#sumario{
+
+
+#sumario {
    
     background-color: var(--azul-claro);
-    overflow-y: auto;
 }
 
 #sumario li{
@@ -290,23 +448,6 @@ main {
    
 }
 
-#ofertas-do-dia{
-    background-color: var(--main-color);
-    color: #fff;
-    font-weight: bold;
-    outline: solid 1px #000;
-    border-radius: 10px;
-    padding-bottom: 6px;
-    margin: 20px 0px;
-    border-bottom-width: 6px; 
-    border-bottom-style: solid; 
-    border-bottom-color: var(--footer-color);
-}
-
-#ofertas-do-dia .texto-markenting{
-    font-size: 2rem; 
-    text-align: center;
-}
 
 
 .card-index{
@@ -428,7 +569,12 @@ header>a>img:hover{
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
 }
-
+ header h1{
+    font-size: max(2rem, 2vw);;
+    font-weight: bold;
+    color: #fff;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;}
 
 
 
@@ -504,7 +650,7 @@ li a:hover {
     margin: auto;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     margin: 10px;
 
@@ -514,7 +660,7 @@ li a:hover {
 
 .img-produto img{
     max-width: 45%;
-    margin: 30px;
+    margin: 0px;
     height: auto;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
@@ -676,11 +822,15 @@ li {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    text-align: center;
     margin: 5px;
     padding: 3px;
-     line-height: 1.5em;
+    line-height: 1.5em;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #000;
+    margin: 20px 20px 20px 20px;
 }
+
 
 h1{
     font-size: 2.5rem;
@@ -696,12 +846,8 @@ h2{
 
 }
 
-h3, h4, h5, h6 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #000;
-    margin: 20px 20px 20px 20px;
-}
+
+   
 
 fieldset {
     
@@ -752,6 +898,27 @@ html {
   
 }
 
+#ofertas-do-dia{
+    background-color: var(--main-color);
+    color: #fff;
+    font-weight: bold;
+    outline: solid 1px #000;
+    border-radius: 10px;
+    padding-bottom: 6px;
+    margin: 20px 0px;
+    width: 100%;
+    border-bottom-width: 6px; 
+    border-bottom-style: solid; 
+    border-bottom-color: var(--footer-color);
+    margin: auto;
+}
+
+#ofertas-do-dia .texto-markenting{
+    font-size: max(1.7rem, 2vw);
+    text-align: center;
+}
+
+
 .carousel {
     position: relative;
     overflow: hidden;
@@ -759,6 +926,7 @@ html {
     margin: auto;
     background-color: #fff;
     border-radius: inherit;
+    
 
 }
 
@@ -772,7 +940,7 @@ box-sizing: border-box;
 .carousel-track-container {
     position: relative;
     overflow: hidden;
-   
+ 
  
 }
 
@@ -782,23 +950,96 @@ box-sizing: border-box;
     transition: transform 0.5s ease-in-out;
 }
 
+
+
+
 .carousel-item {
     min-width: 100%;/* sempre deve ser 100% pois se mudar deverá modificar a função corroucel no JS*/
-    text-align: center;
     list-style: none;
-    padding: 20px 0;
+    padding: 20px 40px;
     color: #000;
     background-color: #457b9d2c;
-    
-    display: flex;
-    justify-content: space-around;
-    align-items: center;    
-    flex-direction: row;
+
+    /* 457b9d2c */
 }
 
-.carousel-item img {
-    max-width: 100%;
-    height: 30vh;
+.texto-carousel {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    
+     h3{
+        
+        font-weight: 600;
+        margin: 5px 0px 5px 0px;
+     
+        width: 100%;
+        text-align: center;
+     }
+
+   
+}
+
+
+.descricao{
+    text-align: center;
+    font-size: .8em;
+    font-weight: 100;
+  }
+.valores{
+    margin: 5px 0px 5px 0px;
+    width: 100%;
+    text-align: center;
+    font-size: larger;
+    font-weight: 100;
+   
+}
+
+
+.texto-carousel .ver-oferta{
+ 
+ 
+    color: #fff;
+    align-self:center;
+
+    width: 100%;
+    background-color: rgb(77 169 44) ;
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img{
+        width: 20px;
+        height: 20px;
+        margin: 0px 5px 0px 5px;
+    }
+   
+}
+
+.texto-carousel .ver-oferta:hover{
+    text-decoration: none;
+}
+
+
+
+.texto-carousel .por img{
+    width: 30px;
+    height: 30px;
+    margin: 0px 5px 0px 5px;
+  
+}
+
+
+
+.carousel-item img {   
     border-radius: 8px;
 }
 

@@ -197,7 +197,7 @@ function criarLogoLink() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    carrocel();
+   
     criarNavMenuSite();
     fechaMenuAcessoRapido();
     expandirImagem();
@@ -292,7 +292,7 @@ let backup = 0; // Declara e inicializa a variável backup
 
 const autoCarousel = () => {
     let vezes = 101; // Reinicia a variável w a cada chamada da função
-    let tempo = 4000; // Tempo em milissegundos (3 segundos)
+    let tempo = 6000; // Tempo em milissegundos (3 segundos)
   
     if (w < vezes) {
         document.querySelector('.carousel-control.next').click(); // Clica no botão "next" para iniciar o carrossel automaticamente
@@ -378,6 +378,174 @@ function fecharSumarioScroll(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function ProdutoOferta(titulo, decricao, loja, foto1Src, foto1Alt, url, valorPor) {
+    this.titulo = titulo;
+    this.decricao = decricao;
+    this.loja = loja;
+    this.foto1 = { src: foto1Src, alt: foto1Alt };
+    this.url = url;
+  
+    this.valorPor = valorPor;
+}
+
+// Função para adicionar um novo item ao carousel
+function adicionarItemCarousel(ProdutoOferta) {
+    const carouselTrack = document.querySelector('.carousel-track');
+    
+    if (!carouselTrack) {
+        console.warn('Elemento .carousel-track não encontrado.');
+        return;
+    }
+
+    const novoItem = document.createElement('li');
+    novoItem.classList.add('carousel-item', 'carousel-item-index');
+   
+  
+    novoItem.innerHTML = `
+        <div class="texto-carousel">
+
+            <h3>${ProdutoOferta.titulo}</h3>
+
+            <span class="descricao">${ProdutoOferta.decricao}</span>
+
+            <div class="valores">
+            
+                <span class="por">Por: R$ ${ProdutoOferta.valorPor}<img src="/favicon.ico" alt=""></span>
+
+            </div>
+
+            <a class="ver-oferta" href="${ProdutoOferta.url}" target="_blank">Ver oferta<img src="/imagens/logo-lojas/mini-${ProdutoOferta.loja}.png" alt="Logo marca${ProdutoOferta.loja}"></a>
+
+        </div>
+
+        <img src="${ProdutoOferta.foto1.src}" alt="${ProdutoOferta.foto1.alt}">
+    `;
+
+    carouselTrack.appendChild(novoItem);
+}
+
+// Exemplo de uso no DOMContentLoaded
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('rodando script termo.js');
+
+    const ecotankEpson = new ProdutoOferta(
+        'Epson Ecotank L3250',
+        'Impressora multifuncional tanque de tinta 3 em 1 com conexão WI-FI',
+        'magalu',
+        '/imagens/ofertas-do-dia/impressora-ecotank.webp',
+        'Imagem da impressora Epson Ecotank L3250',
+        'https://www.magazinevoce.com.br/magazinemelhorescustoben/impressora-multifuncional-epson-ecotank-l3250-tanque-de-tinta-colorida-usb-wi-fi/p/231776800/in/imtt/',
+        1299.00
+    );
+
+    const kitNutella = new ProdutoOferta(
+        'Kit Nutella Ferrero - 350g',
+        'Nessa promoção o pote de 350g sai por menos de 20 reais',  
+        'magalu',
+        '/imagens/ofertas-do-dia/kit-tres-nutellas.webp',
+        'Imagem do kit de 3 potes de Nutella',
+        'https://www.magazinevoce.com.br/magazinemelhorescustoben/kit-creme-de-avela-com-cacau-nutella-ferrero-350g-3-unidades/p/229875500/me/crmv/',
+        61.37,
+    );
+
+    const HpTank = new ProdutoOferta(
+        ' HP Smart Tank 581',
+
+        'HP tanque de tinta com conexão WI-FI 2 anos de garantia e tinta para 12mil páginas de BRINDE',
+
+        'amazon',
+        '/imagens/ofertas-do-dia/impressora-hp-tank_.jpg',
+        'Imagem do ProdutoOferta exemplo',
+        'https://www.amazon.com.br/Impressora-Multifuncional-HP-581-Colorida/dp/B0C1L2R4HH?pf_rd_r=9MSATNHTF1WJCXMDBW35&pf_rd_p=037b97f4-4275-49d5-bd4f-fb0f27024f66&linkCode=ll1&tag=allanamazon07-20&linkId=75134c1092f4a8823f0a39cc6544b2b3&language=pt_BR&ref_=as_li_ss_tl',
+        899.00
+    );
+
+     const Geonav  = new ProdutoOferta(
+        'Geonav Power Bank com MagSafe',
+
+        'Carregador Portátil Universal por Indução 10.000mAh, Carregamento rápido, Suporte Dobrável',
+
+        'amazon',
+
+        '/imagens/ofertas-do-dia/geonav-magsafe.jpg',
+
+        'Imagem do Geonav Power Bank com MagSafe',
+
+        'https://www.amazon.com.br/Geonav-Carregador-Carregamento-Compat%C3%ADvel-PB10MAGSG/dp/B0C9QSV82F?pf_rd_r=M84J4PZB7VFMFVDTC07B&pf_rd_p=037b97f4-4275-49d5-bd4f-fb0f27024f66&th=1&linkCode=ll1&tag=allanamazon07-20&linkId=7f1ffd7dfcd7b59a0bdba4efcddd7acf&language=pt_BR&ref_=as_li_ss_tl',
+
+        159.00,
+    );
+
+      const WheyIsolateFuse = new ProdutoOferta(
+        'Whey Protein Isolado ',
+
+        '26 g de proteina por dose e 5,4g de BCAA',
+
+        'magalu',
+
+        '/imagens/ofertas-do-dia/whey-fuse-isolate.webp',
+
+        'Imagem do Whey Protein Isolado',
+
+        'https://www.magazinevoce.com.br/magazinemelhorescustoben/whey-isolate-protein-fuse-900g-bcaas-whey-protein-glutamina-e-aminoacidos-essenciais-ganho-de-musculos-ganho-de-peso-sem-gordura-dark-lab/p/gff61e8kae/sa/samm/',
+
+       65.01,
+    );
+
+    // const produtoExemplo = new ProdutoOferta(
+    //     'Produto Exemplo',
+    //     'Descrição do produto exemplo',
+    //     'loja-exemplo',
+    //     '/imagens/ofertas-do-dia/produto-exemplo.webp',
+    //     'Imagem do produto exemplo',
+    //     'https://www.exemplo.com.br/produto-exemplo',
+    //     99.99
+    // );
+    
+    adicionarItemCarousel(WheyIsolateFuse);
+
+    adicionarItemCarousel(Geonav);
+
+    adicionarItemCarousel(HpTank);
+
+    adicionarItemCarousel(kitNutella);
+
+    adicionarItemCarousel(ecotankEpson);
+
+   
+    carrocel();
+
+});
 
 
 
