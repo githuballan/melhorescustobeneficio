@@ -50,7 +50,7 @@ function preencherElementosPorClasse(produto) {
 
 // Exemplo de uso no DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('rodando script termo.js');
+
 
     const romanticCrown591ml = new Produto(
         'romantic-crown-591ml',

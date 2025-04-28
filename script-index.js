@@ -78,7 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
         'https://www.amazon.com.br/Impressora-Multifuncional-HP-581-Colorida/dp/B0C1L2R4HH?pf_rd_r=9MSATNHTF1WJCXMDBW35&pf_rd_p=037b97f4-4275-49d5-bd4f-fb0f27024f66&linkCode=ll1&tag=allanamazon07-20&linkId=75134c1092f4a8823f0a39cc6544b2b3&language=pt_BR&ref_=as_li_ss_tl',
         799.00
     );
-
      const Geonav  = new Produto(
         'Geonav Power Bank com MagSafe',
 
@@ -115,3 +114,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 });
+
+

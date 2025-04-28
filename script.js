@@ -38,7 +38,7 @@ function mostraMenuAcessoRapido() {
                     }
                     menuEsquerda.style.display = 'block';
                 }
-}; // Adiciona o evento de clique ao botão de menu hamburguer
+}; // Adiciona o evento de clique ao botão de menu Index
 
 function criarTituloDoSumario(){
     
@@ -47,7 +47,7 @@ function criarTituloDoSumario(){
         console.warn('Conteiner do sumário não encontrado.');
         return;
     }
-    console.log(conteinerSumario);
+   
     let titleSumario = document.createElement('h3');
     titleSumario.innerHTML = 'Índice';
     titleSumario.setAttribute('id', 'title-sumario');
@@ -110,7 +110,7 @@ function criarNavMenuSite(){
   
     document.body.insertBefore(navMenuSite, document.body.firstChild.nextSibling); // Adiciona o menu de navegação ao início do body após o header
 }
-function criarMenuHamburguer(){
+function criarMenuIndex(){
     let menuSite = document.getElementById('menu-site');
     let sumario = document.getElementById('sumario');
     
@@ -125,9 +125,9 @@ function criarMenuHamburguer(){
     }
     
     if (sumario || menuSite){
-        console.log('ok');
+      
         let newButton = document.createElement('button');
-        newButton.setAttribute('id', 'menu-hamburguer');
+        newButton.setAttribute('id', 'menu-index');
         newButton.setAttribute('aria-label', 'Abrir menu de acesso rápido');
         newButton.innerHTML = `
         <div>Índice</div>
@@ -136,12 +136,12 @@ function criarMenuHamburguer(){
         menuSite.insertBefore(newButton, menuSite.firstChild);
        
         newButton.addEventListener('click', () => {
-            console.log('Menu hamburguer clicado');
+            console.log('Menu Index clicado');
             mostraMenuAcessoRapido();
             toggleMenu(newButton);
         });
     }
-}// Cria o botão de menu hamburguer e adiciona o evento de clique. Antes de criar o botão, verifica se o menu site e o sumário existem na página.
+}// Cria o botão de menu Index e adiciona o evento de clique. Antes de criar o botão, verifica se o menu site e o sumário existem na página.
 
 function criarDivsMenu(menuSiteId, menus) {
     const menuSite = document.getElementById(menuSiteId);
@@ -202,7 +202,7 @@ document.addEventListener('DOMContentLoaded', () => {
     fechaMenuAcessoRapido();
     expandirImagem();
     criarTituloDoSumario()
-    criarMenuHamburguer();
+    criarMenuIndex();
     criarLogoLink();
    
     if(document.getElementById('sumario') && window.innerWidth <= 1099){
@@ -231,6 +231,15 @@ document.addEventListener('DOMContentLoaded', () => {
        
     ]);
 
+
+
+
+        const urlAtual = window.location.href;
+    console.log(urlAtual); // Exibe a URL atual no console
+
+        const caminhoAtual = window.location.pathname;
+    console.log(caminhoAtual); // Exibe apenas o caminho da URL
+
   
 });
 window.addEventListener('click', (event) => {
@@ -245,23 +254,161 @@ function fecharImagem() {
     }
 };//aumenta a imagem quando clicada e fecha a imagem quando clica fora dela
     
-function carrocel() {
+
+
+function expandirImagem(){
+    // Adiciona um evento de clique a cada imagem selecionada
+    const imagens = document.querySelectorAll('.img-produto img');
+
+   
+    if (imagens.length > 0) {
+        imagens.forEach((img) => {
+            img.addEventListener('click', () => {
+                console.log('Imagem clicada');
+                if (img.id === 'clicada') {
+                    // Esse if é necessário para caso o segundo click seja na imagem depois de aberta ela fecha a imagem, pois sem esse if a imagem reabre a imagem após 10ms
+                    img.removeAttribute('id');
+                } else {        
+                    setTimeout(() => {
+                        img.id = 'clicada';
+                    }
+                    , 10); // Aguarda 10 milisegundos antes de abrir a imagem para impedir que o clique na tela feche a visualização antes da imagem expandir
+                }
+            });
+        });
+    } else {
+        console.warn('Nenhuma imagem encontrada para expandir.');
+    }
+};
+
+function fechaMenuAcessoRapido() {
+    if(innerWidth > 1099) return; // Não fecha o menu se a tela for maior que 1099px
+    document.querySelectorAll('#shortcuts a').forEach((link) => {
+        link.addEventListener('click', () => {
+            document.getElementById('menu-index').click();
+        });
+    });
+}// Fecha o sumario quando clica em um de seus links
+
+let lastScrollY = window.scrollY;
+
+function toggleMenuSiteOnScroll() {
+    let menuEsquerda = document.getElementById('sumario');
+
+    if (window.innerWidth <= 1099) {
+        const menuSite = document.getElementById('menu-site');
+        if (!menuSite) return;
+
+        if (window.scrollY < lastScrollY || menuEsquerda.style.display==='block') {
+            menuSite.setAttribute('class', 'menu-site-scroll-exibir'); 
+        } else { menuSite.setAttribute('class', '');
+            // Scroll para cima - exibe o menu
+             }
+
+        lastScrollY = window.scrollY;
+    }
+}//exibe o nav menu site quando o scroll é para baixo e esconde quando o scroll é para cima
+
+window.addEventListener('scroll', () => { 
+toggleMenuSiteOnScroll();
+fecharSumarioScroll();
+    
+});
+
+function fecharSumarioScroll(){
+   
+    if(document.getElementById('sumario').style.display==='block' &&  window.innerWidth <= 1099){
+    document.getElementById('menu-index').click();}
+}//Essa função existe para evitar desalinhamento entre o sumario e a nav#menu-site
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+function criarOfertasDoDia(){
+
+    const conteinerTelasPequenas = document.getElementById('conteiner-ofertas-do-dia-para-telas-pequenas');
+   
+    const conteinerTelasGrandes = document.getElementById('conteiner-ofertas-do-dia-para-telas-grandes');
+    
+
+    const ofertasDoDia = document.createElement('div');
+    ofertasDoDia.setAttribute('class', 'ofertas-do-dia');
+    ofertasDoDia.setAttribute('id', 'ofertas-do-dia');
+    ofertasDoDia.setAttribute('aria-label', 'Ofertas do dia');
+   ;
+
+
+   if(innerWidth > 1099 && conteinerTelasGrandes){
+    conteinerTelasGrandes.appendChild(ofertasDoDia);
+   
+
+   }else if(innerWidth <= 1099 && conteinerTelasPequenas){
+    conteinerTelasPequenas.appendChild(ofertasDoDia);
+   
+
+   } else {
+        console.warn('Elemento de tela pequena ou grande não encontrado.');
+        return;
+    }
+}
+
+
+function criarCarousel() {
+  
+    const ofertaDoDia = document.querySelector('.ofertas-do-dia');
+
+    if (!ofertaDoDia) {
+        console.warn('Elemento .ofertas-do-dia não encontrado.');
+        return;
+    }
+    ofertaDoDia.innerHTML = `     <div class="carousel">
+                    
+                        <button class="carousel-control prev" aria-label="Anterior">&#10094;</button>
+                       
+                        <div class="carousel-track-container">
+                            <ul class="carousel-track" id="carousel-track-index">
+                                <!-- Os itens serão adicionados dinamicamente aqui -->
+                            </ul>
+                        </div><!-- /.carousel-track-container -->
+                    
+                        <button class="carousel-control next" aria-label="Próximo">&#10095;</button>
+                    
+                    </div><!-- /.carousel -->
+
+                    <div class="texto-markenting"><a href="/ofertas-do-dia/destaques-do-dia.html">Ofertas do dia!</a> </div>`;
+}
+
+function carrocel() {//cria animação do carrossel
     if(!document.querySelector('.carousel')) return; // Verifica se o elemento existe antes de continuar
 
     const track = document.querySelector('.carousel-track');
     const items = Array.from(track.children); //cada li do carroucel Converte a NodeList em um array para usar métodos de array
     const prevButton = document.querySelector('.carousel-control.prev');
     const nextButton = document.querySelector('.carousel-control.next');
-    const itemWidth = items[0].getBoundingClientRect().width;// Pega a largura do primeiro item do carrossel
+    const itemWidth = document.querySelector('.carousel-track-container').offsetWidth; // Pega a largura do primeiro item do carrossel
 
-  
+  console.log( itemWidth); // Pega a largura do elemento pai do carrossel
+
     // Arrange items side by side
     items.forEach((item, index) => {
         item.style.left = `${itemWidth * index}px`; 
-        console.log('index: '+index);
-        console.log('item: '+items);
-        console.log('itemWidth: '+itemWidth);
-
+      
     });// Coloca os itens lado a lado, multiplicando a largura do item pelo índice do item
 
     let currentIndex = 0;
@@ -311,241 +458,266 @@ autoCarousel(); // Inicia o carrossel automaticamente
 
 }
 
-function expandirImagem(){
-    // Adiciona um evento de clique a cada imagem selecionada
-    const imagens = document.querySelectorAll('.img-produto img');
-
-   
-    if (imagens.length > 0) {
-        imagens.forEach((img) => {
-            img.addEventListener('click', () => {
-                console.log('Imagem clicada');
-                if (img.id === 'clicada') {
-                    // Esse if é necessário para caso o segundo click seja na imagem depois de aberta ela fecha a imagem, pois sem esse if a imagem reabre a imagem após 10ms
-                    img.removeAttribute('id');
-                } else {        
-                    setTimeout(() => {
-                        img.id = 'clicada';
-                    }
-                    , 10); // Aguarda 10 milisegundos antes de abrir a imagem para impedir que o clique na tela feche a visualização antes da imagem expandir
-                }
-            });
-        });
-    } else {
-        console.warn('Nenhuma imagem encontrada para expandir.');
-    }
-};
-
-function fechaMenuAcessoRapido() {
-    if(innerWidth > 1099) return; // Não fecha o menu se a tela for maior que 1099px
-    document.querySelectorAll('#shortcuts a').forEach((link) => {
-        link.addEventListener('click', () => {
-            document.getElementById('menu-hamburguer').click();
-        });
-    });
-}// Fecha o sumario quando clica em um de seus links
-
-let lastScrollY = window.scrollY;
-
-function toggleMenuSiteOnScroll() {
-    let menuEsquerda = document.getElementById('sumario');
-
-    if (window.innerWidth <= 1099) {
-        const menuSite = document.getElementById('menu-site');
-        if (!menuSite) return;
-
-        if (window.scrollY < lastScrollY || menuEsquerda.style.display==='block') {
-            menuSite.setAttribute('class', 'menu-site-scroll-exibir'); 
-        } else { menuSite.setAttribute('class', '');
-            // Scroll para cima - exibe o menu
-             }
-
-        lastScrollY = window.scrollY;
-    }
-}//exibe o nav menu site quando o scroll é para baixo e esconde quando o scroll é para cima
-
-window.addEventListener('scroll', () => { 
-toggleMenuSiteOnScroll();
-fecharSumarioScroll();
-    
-});
-
-function fecharSumarioScroll(){
-   
-    if(document.getElementById('sumario').style.display==='block' &&  window.innerWidth <= 1099){
-    document.getElementById('menu-hamburguer').click();}
-}//Essa função existe para evitar desalinhamento entre o sumario e a nav#menu-site
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-function ProdutoOferta(titulo, decricao, loja, foto1Src, foto1Alt, url, valorPor) {
+function ProdutoOferta(titulo, decricao, loja, foto1Src, foto1Alt, url, valorPor, categoria) {
     this.titulo = titulo;
     this.decricao = decricao;
     this.loja = loja;
     this.foto1 = { src: foto1Src, alt: foto1Alt };
     this.url = url;
-  
     this.valorPor = valorPor;
+    this.categoria = categoria;    
 }
 
 // Função para adicionar um novo item ao carousel
-function adicionarItemCarousel(ProdutoOferta) {
-    const carouselTrack = document.querySelector('.carousel-track');
-    
-    if (!carouselTrack) {
-        console.warn('Elemento .carousel-track não encontrado.');
+function adicionarItensCarouselPorCategoria(produtos) {
+    // Identifica o contêiner correto com base no tamanho da tela
+    const conteiner =
+        innerWidth > 1099
+            ? document.getElementById('conteiner-ofertas-do-dia-para-telas-grandes')
+            : document.getElementById('conteiner-ofertas-do-dia-para-telas-pequenas');
+
+    if (!conteiner) {
+        console.warn('Contêiner de ofertas do dia não encontrado.');
         return;
     }
 
-    const novoItem = document.createElement('li');
-    novoItem.classList.add('carousel-item', 'carousel-item-index');
-   
-  
-    novoItem.innerHTML = `
-        <div class="texto-carousel">
+    // Obtém a classe do contêiner para filtrar os produtos
+    const categoria = conteiner.classList[0]; // Assume que a classe relevante é a primeira
 
-            <h3>${ProdutoOferta.titulo}</h3>
+    if (!categoria) {
+        console.warn('Nenhuma classe encontrada no contêiner.');
+        return;
+    }
 
-            <span class="descricao">${ProdutoOferta.decricao}</span>
+    // Seleciona o carrossel dentro do contêiner
+    const carouselTrack = conteiner.querySelector('.carousel-track');
 
-            <div class="valores">
-            
-                <span class="por">Por: R$ ${ProdutoOferta.valorPor}<img src="/favicon.ico" alt=""></span>
+    if (!carouselTrack) {
+        console.warn('Elemento .carousel-track não encontrado no contêiner.');
+        return;
+    }
 
-            </div>
+    // Filtra e adiciona os produtos ao carrossel
+    produtos
+        .filter(produto => produto.categoria === categoria || categoria==='todos') // Filtra os produtos pela categoria
+        .forEach(produto => {
+            const novoItem = document.createElement('li');
+            novoItem.classList.add('carousel-item', 'carousel-item-index');
 
-            <a class="ver-oferta" href="${ProdutoOferta.url}" target="_blank">Ver oferta<img src="/imagens/logo-lojas/mini-${ProdutoOferta.loja}.png" alt="Logo marca${ProdutoOferta.loja}"></a>
+            novoItem.innerHTML = `
+                <div class="texto-carousel">
+                    <h3>${produto.titulo}</h3>
+                    <span class="descricao">${produto.decricao}</span>
+                    <div class="valores">
+                        <span class="por">Por: R$ ${produto.valorPor.toFixed(2).toString().replace('.', ',')}<img src="/favicon.ico" alt=""></span>
+                    </div>
+                    <a class="ver-oferta" href="${produto.url}" target="_blank">
+                        Ver oferta
+                        <img src="/imagens/logo-lojas/mini-${produto.loja}.png" alt="Logo marca ${produto.loja}">
+                    </a>
+                </div>
+                <img src="${produto.foto1.src}" alt="${produto.foto1.alt}">
+            `;
 
-        </div>
-
-        <img src="${ProdutoOferta.foto1.src}" alt="${ProdutoOferta.foto1.alt}">
-    `;
-
-    carouselTrack.appendChild(novoItem);
+            carouselTrack.appendChild(novoItem);
+        });
 }
 
-// Exemplo de uso no DOMContentLoaded
+
+
+
+function adicionarProdutosTabela(produtos) {
+    produtos.forEach(produto => {
+        const tbody = document.getElementById(produto.categoria);
+
+        if (!tbody) {
+            console.warn(`Elemento com o ID "${produto.categoria}" não foi encontrado.`);
+            return;
+        }
+
+        const novaLinha = document.createElement('tr');
+
+        // Coluna 1: Título
+        const colunaTitulo = document.createElement('td');
+        colunaTitulo.textContent = produto.titulo;
+        novaLinha.appendChild(colunaTitulo);
+
+        // Coluna 2: Descrição
+        const colunaDescricao = document.createElement('td');
+        colunaDescricao.textContent = produto.decricao;
+        novaLinha.appendChild(colunaDescricao);
+
+        // Coluna 3: Valor e link
+        const colunaValor = document.createElement('td');
+        colunaValor.innerHTML = `
+            R$ ${produto.valorPor.toFixed(2).toString().replace('.', ',')}<br> 
+            <a class="ver-oferta" href="${produto.url}" target="_blank">
+               
+                <img src="/imagens/logo-lojas/mini-${produto.loja}.png" alt="Logo marca ${produto.loja}">
+            </a>
+        `;
+        novaLinha.appendChild(colunaValor);
+
+        // Adiciona a nova linha ao tbody
+        tbody.appendChild(novaLinha);
+    });
+}
+
+
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('rodando script termo.js');
+//A ordem de execução das funções aqui é importante para garantir que os elementos sejam criados e que as funcionalidades sejam aplicadas corretamente.POR ISSO ESSE ESTÁ SEPARADO DO OUTRO DOM!!!!!!!!!!!!!
+    criarOfertasDoDia();
 
-    const ecotankEpson = new ProdutoOferta(
-        'Epson Ecotank L3250',
-        'Impressora multifuncional tanque de tinta 3 em 1 com conexão WI-FI',
-        'magalu',
-        '/imagens/ofertas-do-dia/impressora-ecotank.webp',
-        'Imagem da impressora Epson Ecotank L3250',
-        'https://www.magazinevoce.com.br/magazinemelhorescustoben/impressora-multifuncional-epson-ecotank-l3250-tanque-de-tinta-colorida-usb-wi-fi/p/231776800/in/imtt/',
-        1299.00
-    );
+    criarCarousel();
 
-    const kitNutella = new ProdutoOferta(
-        'Kit Nutella Ferrero - 350g',
-        'Nessa promoção o pote de 350g sai por menos de 20 reais',  
-        'magalu',
-        '/imagens/ofertas-do-dia/kit-tres-nutellas.webp',
-        'Imagem do kit de 3 potes de Nutella',
-        'https://www.magazinevoce.com.br/magazinemelhorescustoben/kit-creme-de-avela-com-cacau-nutella-ferrero-350g-3-unidades/p/229875500/me/crmv/',
-        61.37,
-    );
+    const produtos = [
+        new ProdutoOferta(
+            'Epson Ecotank L3250',
+            'Impressora multifuncional tanque de tinta 3 em 1 com conexão WI-FI',
+            'magalu',
+            '/imagens/ofertas-do-dia/impressora-ecotank.webp',
+            'Imagem da impressora Epson Ecotank L3250',
+            'https://www.magazinevoce.com.br/magazinemelhorescustoben/impressora-multifuncional-epson-ecotank-l3250-tanque-de-tinta-colorida-usb-wi-fi/p/231776800/in/imtt/',
+            1299.00,
+            'tecnologia'
+        ),
+        new ProdutoOferta(
+            'Kit 3 Nutellas de 350g',
+            'Nessa promoção o pote de 350g sai por menos de 20 reais',
+            'magalu',
+            '/imagens/ofertas-do-dia/kit-tres-nutellas.webp',
+            'Imagem do kit de 3 potes de Nutella',
+            'https://www.magazinevoce.com.br/magazinemelhorescustoben/kit-creme-de-avela-com-cacau-nutella-ferrero-350g-3-unidades/p/229875500/me/crmv/',
+            61.37,
+            'variados'
+        ),
 
-    const HpTank = new ProdutoOferta(
-        ' HP Smart Tank 581',
-
-        'HP tanque de tinta com conexão WI-FI 2 anos de garantia e tinta para 12mil páginas de BRINDE',
-
-        'amazon',
-        '/imagens/ofertas-do-dia/impressora-hp-tank_.jpg',
-        'Imagem do ProdutoOferta exemplo',
-        'https://www.amazon.com.br/Impressora-Multifuncional-HP-581-Colorida/dp/B0C1L2R4HH?pf_rd_r=9MSATNHTF1WJCXMDBW35&pf_rd_p=037b97f4-4275-49d5-bd4f-fb0f27024f66&linkCode=ll1&tag=allanamazon07-20&linkId=75134c1092f4a8823f0a39cc6544b2b3&language=pt_BR&ref_=as_li_ss_tl',
-        899.00
-    );
-
-     const Geonav  = new ProdutoOferta(
-        'Geonav Power Bank com MagSafe',
-
-        'Carregador Portátil Universal por Indução 10.000mAh, Carregamento rápido, Suporte Dobrável',
-
-        'amazon',
-
-        '/imagens/ofertas-do-dia/geonav-magsafe.jpg',
-
-        'Imagem do Geonav Power Bank com MagSafe',
-
-        'https://www.amazon.com.br/Geonav-Carregador-Carregamento-Compat%C3%ADvel-PB10MAGSG/dp/B0C9QSV82F?pf_rd_r=M84J4PZB7VFMFVDTC07B&pf_rd_p=037b97f4-4275-49d5-bd4f-fb0f27024f66&th=1&linkCode=ll1&tag=allanamazon07-20&linkId=7f1ffd7dfcd7b59a0bdba4efcddd7acf&language=pt_BR&ref_=as_li_ss_tl',
-
-        159.00,
-    );
-
-      const WheyIsolateFuse = new ProdutoOferta(
-        'Whey Protein Isolado ',
-
-        '26 g de proteina por dose e 5,4g de BCAA',
-
-        'magalu',
-
-        '/imagens/ofertas-do-dia/whey-fuse-isolate.webp',
-
-        'Imagem do Whey Protein Isolado',
-
-        'https://www.magazinevoce.com.br/magazinemelhorescustoben/whey-isolate-protein-fuse-900g-bcaas-whey-protein-glutamina-e-aminoacidos-essenciais-ganho-de-musculos-ganho-de-peso-sem-gordura-dark-lab/p/gff61e8kae/sa/samm/',
-
-       65.01,
-    );
-
-    // const produtoExemplo = new ProdutoOferta(
-    //     'Produto Exemplo',
-    //     'Descrição do produto exemplo',
-    //     'loja-exemplo',
-    //     '/imagens/ofertas-do-dia/produto-exemplo.webp',
-    //     'Imagem do produto exemplo',
-    //     'https://www.exemplo.com.br/produto-exemplo',
-    //     99.99
-    // );
+        new ProdutoOferta(
+            ' HP Smart Tank 581',
     
-    adicionarItemCarousel(WheyIsolateFuse);
+            'HP tanque de tinta com conexão WI-FI 2 anos de garantia e tinta para 12mil páginas de BRINDE',
+    
+            'amazon',
+            '/imagens/ofertas-do-dia/impressora-hp-tank_.jpg',
+            'Imagem do ProdutoOferta exemplo',
+            'https://www.amazon.com.br/Impressora-Multifuncional-HP-581-Colorida/dp/B0C1L2R4HH?pf_rd_r=9MSATNHTF1WJCXMDBW35&pf_rd_p=037b97f4-4275-49d5-bd4f-fb0f27024f66&linkCode=ll1&tag=allanamazon07-20&linkId=75134c1092f4a8823f0a39cc6544b2b3&language=pt_BR&ref_=as_li_ss_tl',
+            899.00,
+             'tecnologia'
 
-    adicionarItemCarousel(Geonav);
+        ),
 
-    adicionarItemCarousel(HpTank);
 
-    adicionarItemCarousel(kitNutella);
+     
+        new ProdutoOferta(
+            'Whey Protein Isolado',
 
-    adicionarItemCarousel(ecotankEpson);
+            '26 g de proteína por dose e 5,4g de BCAA',
 
-   
+            'magalu',
+
+            '/imagens/ofertas-do-dia/whey-fuse-isolate.webp',
+
+            'Imagem do Whey Protein Isolado',
+
+            'https://www.magazinevoce.com.br/magazinemelhorescustoben/whey-isolate-protein-fuse-900g-bcaas-whey-protein-glutamina-e-aminoacidos-essenciais-ganho-de-musculos-ganho-de-peso-sem-gordura-dark-lab/p/gff61e8kae/sa/samm/',
+
+            65.01,
+            'fitness'
+        ),
+
+        new ProdutoOferta(
+           'Creatina Pura Integralmédica',
+
+           'Creatina Hardacore 100% pura, 300g valor médio é entre 80 e 100 reais',
+
+           'magalu',
+
+           '/fitness/imagens/integral-medica/creatina-integral-hardcore.webp',
+
+           'Imagem da Creatina Pura Integralmédica',
+
+           'https://www.magazinevoce.com.br/magazinemelhorescustoben/creatina-100-pura-monohidratada-hardcore-300g-integral-medica-integral-medica/p/bba4jg8d9g/sa/sacr/',
+
+           64.40,
+
+         'fitness',
+
+        ),
+
+        new ProdutoOferta(
+            'Tênis Adidas Breaknet Masculino',//Titulo do produto aqui',
+            'Mais de 50 reais de desconto com bastante variedade de tamanhos',//Descrição do produto aqui',
+            'magalu',//Loja do produto aqui',
+            '/imagens/ofertas-do-dia/tennis-adidaas-lista-vermelha.webp',//src da imagem aqui',
+            'Imagem Tênis Adidas Breaknet Masculino',//alt da imagem aqui',
+            'https://www.magazinevoce.com.br/magazinemelhorescustoben/tenis-adidas-breaknet-masculino/p/cgj8jb2bk5/md/osnr/',//url do produto aqui',
+              159.99,//valor do produto aqui',
+          'variados',//categoria do produto aqui',
+  
+  
+          ),
+
+           new ProdutoOferta(
+          'Xiaomi Mi Band 8 Active Versão Global',//Titulo do produto aqui',
+          'Promoção com parcelamento sem juros',//Descrição do produto aqui',
+          'amazon',//Loja do produto aqui',
+          '/imagens/ofertas-do-dia/smartwatch-xiaomi.jpeg',//src da imagem aqui',
+          'Imagem do produto',//alt da imagem aqui',
+          'https://www.amazon.com.br/Xiaomi-Active-vers%C3%A3o-global-Preto/dp/B0CHJ2C1YS?th=1&linkCode=ll1&tag=allanamazon07-20&linkId=0a0db8101e44cb1e603423bc4d6e1035&language=pt_BR&ref_=as_li_ss_tl',//url do produto aqui',
+          205.90,//valor do produto aqui',
+        'tecnologia',//categoria do produto aqui' tecnologia variados fitness
+
+
+        ),
+
+
+        // new ProdutoOferta(
+        //   '',//Titulo do produto aqui',
+        //   '',//Descrição do produto aqui',
+        //   '',//Loja do produto aqui',
+        //   '',//src da imagem aqui',
+        //   '',//alt da imagem aqui',
+        //   '',//url do produto aqui',
+        //     0,//valor do produto aqui',
+        // '',//categoria do produto aqui' tecnologia variados fitness
+
+
+        // ),
+
+
+    
+        // Adicione mais produtos aqui, se necessário
+    ];//OS PODUTO CRIADOS AQUI SERÃO ADICIONADOS AUTOMATICAMENTE A TABELA E AO CARROCEL
+
+    adicionarProdutosTabela(produtos);
+
+    adicionarItensCarouselPorCategoria(produtos);
+
+
     carrocel();
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

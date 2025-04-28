@@ -69,14 +69,14 @@ vermelho pra seta do carrinho*/
         display: none;
         max-height: 90vh;
         padding: 10px;
+        overflow-y: scroll;
     }
     #lateral-esquerda{
         z-index: 110;
-       
         position:fixed;
         top: 57px;
         left:0px;
-        display: block;
+       
         height: auto;
         width: auto;
         display: flex;
@@ -88,19 +88,19 @@ vermelho pra seta do carrinho*/
 
    
 
-    #menu-hamburguer {
-        display: flex;
-       
-        }
-
+  
     #menu-site{
-        justify-content: space-evenly;
+        justify-content: center;
         align-items: center;
         flex-wrap: nowrap;
         order: -1;
      
+     
     }
 
+   #menu-site div{
+            margin: 0px;
+        }
     #destaques-index {
         display: flex;
         flex-direction: column;
@@ -153,7 +153,8 @@ vermelho pra seta do carrinho*/
 
 
     #lateral-direita {
-        width: 100%;
+       display: flex;
+    
         
      }
      
@@ -169,11 +170,37 @@ vermelho pra seta do carrinho*/
         text-align: center;
     }
 
+    #conteiner-ofertas-do-dia-para-telas-pequenas{
+        width: 98%;
+    }
+
 }/*max-width: 1099px*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media only screen and (min-width: 1100px) {
 
    
-    #menu-hamburguer {
+    #menu-index {
             display: none;
         }
 
@@ -213,8 +240,8 @@ vermelho pra seta do carrinho*/
     
     #shortcuts{
         transition: all 0.5s linear;
-        height: 100%;
-        overflow-y: auto;
+        max-height: 100%;
+ 
     }
 
     #shortcuts li{
@@ -314,8 +341,6 @@ vermelho pra seta do carrinho*/
                
         }}
 
-        
-      
 
        
 
@@ -349,26 +374,10 @@ vermelho pra seta do carrinho*/
           
         }
 
-      #lateral-direita .texto-carousel{
-            width: 95%;
-
-            h3{
-                font-size: 1.5em;
-                height: 80px;
-            }
-
-            .descricao{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-                font-size: 1em;
-                height: 135px;
-               
-        }}
+   
 
         
-    #lateral-direita #ofertas-do-dia{
+    #lateral-direita .ofertas-do-dia{
         position: sticky;
         top: 10px;
       }
@@ -380,11 +389,41 @@ vermelho pra seta do carrinho*/
            font-weight: 300;
         }
 
+        #conteiner-ofertas-do-dia-para-telas-grandes{
+            height: 50%;
+            padding: 10px;
+        }
+
      
 
 
 
     }/*min-width: 1100px*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #menu-site ul{
     display: none;
     position: absolute;
@@ -394,14 +433,43 @@ vermelho pra seta do carrinho*/
     z-index: 100;
 }
 
-#menu-site div{
-    margin: 0px 5px 0px 5px;
-    
+.img-capa{
+    width: 50%; 
+    margin: 1% 25%; 
+    border-radius: 10px;
 }
 
 #lateral-esquerda {
     background-color: var(--main-color);
    
+}
+
+#links-relacionados{
+    height: 50%;
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#links-relacionados a{
+    display: block;
+    margin-bottom: 100px;
+    flex-grow: 0;
+    border-radius: 10px;
+    padding: 0px;
+    font-variant:small-caps;
+  
+    /* box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.342); */
+}
+
+#links-relacionados a *{
+   padding: 0px;
+    margin: 0px;
+    /* box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.342); */
 }
 
 /* #lateral-direita {
@@ -430,10 +498,10 @@ main {
   
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex-wrap: wrap;
-    padding-bottom: 500px;
+    padding-bottom: 100px;
     padding-top: 20px;
 }
 
@@ -442,9 +510,17 @@ main {
 
 }
 
+main h2 {
+    font-variant: small-caps;
+    text-align: center;
+ 
+}
+
 .texto-markenting{
     margin: 5px 10px 0px 10px;
     padding:10px ; 
+    font-size: 1.5rem;
+    line-height: 1em;
    
 }
 
@@ -493,7 +569,7 @@ main {
 }
 
 
-#menu-hamburguer {
+#menu-index {
     cursor: pointer;
     border: solid 0px #000;
    border-radius: 3px;
@@ -510,18 +586,6 @@ main {
     
 }
 
-/* #menu-hamburguer .bar1, #menu-hamburguer .bar2, #menu-hamburguer .bar3 {
-    width: 20px;
-    height: 4px;
-    background-color: var(--main-color);
-    margin: auto;
-    margin-top: 2px;
-    margin-bottom: 2px;
-    transition: 0.4s;
-    border-radius: 5px;
-  
-   
-} */
 
 .seta{
     transform: rotate(270deg);
@@ -672,11 +736,10 @@ li a:hover {
     transition: all 0.3s ease-in-out;
 }
 
-.overflow{
+.table-overflow{
     overflow-x: auto;
-    max-width: 90%;
-    margin: 10px;
-    padding: 10px;
+    max-width: 98%;
+    padding: 0px;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
 }
@@ -712,7 +775,8 @@ caption{
 .tabela-produto th{
     background-color: var(--secondary-color);
     color: #fff;
-   border-left: solid 3px #fff;
+    border:solid 2px black;
+    padding: 8px;
     
 }
 
@@ -898,7 +962,7 @@ html {
   
 }
 
-#ofertas-do-dia{
+.ofertas-do-dia{
     background-color: var(--main-color);
     color: #fff;
     font-weight: bold;
@@ -913,7 +977,7 @@ html {
     margin: auto;
 }
 
-#ofertas-do-dia .texto-markenting{
+.ofertas-do-dia .texto-markenting{
     font-size: max(1.7rem, 2vw);
     text-align: center;
 }
