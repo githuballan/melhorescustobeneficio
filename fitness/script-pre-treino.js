@@ -14,6 +14,7 @@ function preencherElementosPorClasse(produto) {
        img1Elements.forEach(img1 => {
            img1.setAttribute('src', produto.foto1.src);
            img1.setAttribute('alt', produto.foto1.alt);
+        img1.setAttribute('class', 'img-produto'); // Adicionando a classe 'img-produto'
        });
    } else {
        console.warn(`Elements with class img1-${produto.titulo} not found`);
@@ -24,6 +25,7 @@ function preencherElementosPorClasse(produto) {
        img2Elements.forEach(img2 => {
            img2.setAttribute('src', produto.foto2.src);
            img2.setAttribute('alt', produto.foto2.alt);
+           img1.setAttribute('class', 'img-produto'); // Adicionando a classe 'img-produto'
        });
    } else {
        console.warn(`Elements with class img2-${produto.titulo} not found`);

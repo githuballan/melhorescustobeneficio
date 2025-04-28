@@ -45,6 +45,7 @@ vermelho pra seta do carrinho*/
 
     main{
        width: 100%;
+       max-width: 800px;
        
     }
 
@@ -151,6 +152,13 @@ vermelho pra seta do carrinho*/
         }     
     }
 
+    td{
+        font-size: 13px;
+        font-weight: 500;
+        font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji';;
+    
+    }
+
 
     #lateral-direita {
        display: flex;
@@ -211,7 +219,7 @@ vermelho pra seta do carrinho*/
         "nav nav nav"
         "lateral-esquerda main lateral-direita"
         "footer footer footer";
-        grid-template-columns: 1fr 3fr 1fr;
+        grid-template-columns: 1fr 4fr 1fr;
         grid-template-rows: auto auto auto auto;
         gap: 0px;
         padding: 0px;
@@ -253,7 +261,7 @@ vermelho pra seta do carrinho*/
         grid-area: lateral-esquerda;
         height: 100%;
         width: 100%;
-        min-width: 200px;
+        min-width: 250px;
         min-height: 200px;
         background-color: var(--main-color);
         display: flex;
@@ -265,9 +273,16 @@ vermelho pra seta do carrinho*/
 
         #lateral-direita{
             grid-area: lateral-direita;
-            width: 400px;
+            width: 100%;
+            min-width: 250px;
+            min-height: 200px;
            
-        }
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            align-items: center;
+            flex-wrap: nowrap;
+            }
        
       
    
@@ -392,6 +407,7 @@ vermelho pra seta do carrinho*/
         #conteiner-ofertas-do-dia-para-telas-grandes{
             height: 50%;
             padding: 10px;
+            width: 100%;
         }
 
      
@@ -437,6 +453,13 @@ vermelho pra seta do carrinho*/
     width: 50%; 
     margin: 1% 25%; 
     border-radius: 10px;
+}
+
+.img-produto:hover{
+    transform: scale(1.02);
+    box-shadow: #ddd 0px 0px 5px 1px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 #lateral-esquerda {
@@ -708,7 +731,7 @@ li a:hover {
 
 
 
-.img-produto{
+.fotos-produto{
     width: 90%;
     height: auto;
     margin: auto;
@@ -722,14 +745,14 @@ li a:hover {
 
 
 
-.img-produto img{
+.fotos-produto img{
     max-width: 45%;
     margin: 0px;
     height: auto;
     border-radius: 10px;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);
 }
-.img-produto img:hover{
+.fotos-produto img:hover{
     z-index: 10;
     transform: translate(0px, -5px) ;
     cursor: pointer;
@@ -758,19 +781,10 @@ caption{
     border:solid 2px black;
     padding: 8px;
     text-align: center;
+
+  
 }
 
-.tabela-produto td img{
-    max-width: 70px;
-    height: 30px;
-}
-
-.tabela-produto th a {
-    text-decoration: none; /* Remove sublinhado */
-    color: inherit; /* Faz com que a cor do link herde a cor do elemento pai */
-    z-index: 100;
-
-}
 
 .tabela-produto th{
     background-color: var(--secondary-color);
@@ -780,6 +794,12 @@ caption{
     
 }
 
+.tabela-produto th a {
+    text-decoration: none; /* Remove sublinhado */
+    color: inherit; /* Faz com que a cor do link herde a cor do elemento pai */
+    z-index: 100;
+
+}
 .tabela-produto th a:hover {
      /* Cor do link ao passar o mouse */
     text-decoration: underline; /* Sublinha o link ao passar o mouse */
@@ -787,6 +807,7 @@ caption{
 }
 
 .tabela-produto td img{
+
     width: 50px;
     height: auto;
     border-radius: 10px;
@@ -808,6 +829,7 @@ td[scope="row"]{
     left:0px;
     background-color: var(--background-color);
     border: solid 2px #000;
+  
 }
 
 
@@ -854,12 +876,11 @@ td[scope="row"]{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    max-width: 90%;
-    max-height: 90%;
-    margin: auto;
-   
-    z-index: 100;
+    max-height: 90vh;
+    max-width: 90vw;
     width: auto;
+    height: auto;
+    z-index: 100;
     transition: all 0.3s ease-in-out;
     box-shadow: 1px 1px 1px 100vmax rgba(0, 0, 0, 0.139);
 }
@@ -872,7 +893,7 @@ td[scope="row"]{
 
 
 p {
-    margin: 7px;
+    margin: 15px 7px 15px 7px;
     text-indent: 3em;
 }
 
@@ -980,6 +1001,12 @@ html {
 .ofertas-do-dia .texto-markenting{
     font-size: max(1.7rem, 2vw);
     text-align: center;
+}
+
+.ofertas-do-dia .texto-markenting:hover{
+    scale: 1.05;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
 }
 
 

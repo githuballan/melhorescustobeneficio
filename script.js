@@ -200,7 +200,6 @@ document.addEventListener('DOMContentLoaded', () => {
    
     criarNavMenuSite();
     fechaMenuAcessoRapido();
-    expandirImagem();
     criarTituloDoSumario()
     criarMenuIndex();
     criarLogoLink();
@@ -247,7 +246,7 @@ window.addEventListener('click', (event) => {
 });
 
 function fecharImagem() {
-    const clicada = document.querySelector('.img-produto img#clicada');
+    const clicada = document.querySelector('#clicada');
     if (clicada) {
         console.log('Clique fora da imagem');
         clicada.removeAttribute('id'); // Remove o id apenas da imagem clicada
@@ -258,7 +257,7 @@ function fecharImagem() {
 
 function expandirImagem(){
     // Adiciona um evento de clique a cada imagem selecionada
-    const imagens = document.querySelectorAll('.img-produto img');
+    const imagens = document.querySelectorAll('.img-produto'); // Seleciona todas as imagens dentro de elementos com a classe 'img-produto'
 
    
     if (imagens.length > 0) {
@@ -271,6 +270,7 @@ function expandirImagem(){
                 } else {        
                     setTimeout(() => {
                         img.id = 'clicada';
+
                     }
                     , 10); // Aguarda 10 milisegundos antes de abrir a imagem para impedir que o clique na tela feche a visualização antes da imagem expandir
                 }
@@ -522,7 +522,7 @@ function adicionarItensCarouselPorCategoria(produtos) {
                         <img src="/imagens/logo-lojas/mini-${produto.loja}.png" alt="Logo marca ${produto.loja}">
                     </a>
                 </div>
-                <img src="${produto.foto1.src}" alt="${produto.foto1.alt}">
+                <img  src="${produto.foto1.src}" alt="${produto.foto1.alt}">
             `;
 
             carouselTrack.appendChild(novoItem);
@@ -545,8 +545,9 @@ function adicionarProdutosTabela(produtos) {
 
         // Coluna 1: Título
         const colunaTitulo = document.createElement('td');
-        colunaTitulo.textContent = produto.titulo;
+        colunaTitulo.innerHTML = `<img class="img-produto" src="${produto.foto1.src}" alt="${produto.foto1.alt}">`;
         novaLinha.appendChild(colunaTitulo);
+      
 
         // Coluna 2: Descrição
         const colunaDescricao = document.createElement('td');
@@ -697,8 +698,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     adicionarProdutosTabela(produtos);
 
+   
+
     adicionarItensCarouselPorCategoria(produtos);
 
+    expandirImagem();
 
     carrocel();
 });
