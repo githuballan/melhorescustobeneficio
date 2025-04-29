@@ -1,3 +1,6 @@
+
+const mediaQuerryMaxWidth = 1299; // Lar
+
 function exibir(x) {
     x.nextElementSibling.style.display = "block";
 }
@@ -93,7 +96,7 @@ window.addEventListener('resize', () => {
     const larguraAtual = window.innerWidth;
 
     // Verifica se houve uma mudança de faixa
-    if ((larguraAnterior <= 1099 && larguraAtual > 1099) || (larguraAnterior > 1099 && larguraAtual <= 1099)) {
+    if ((larguraAnterior <= mediaQuerryMaxWidth && larguraAtual > mediaQuerryMaxWidth) || (larguraAnterior > mediaQuerryMaxWidth && larguraAtual <= mediaQuerryMaxWidth)) {
         console.log('Tamanho da tela alterado. Atualizando a página...');
         atualizarPagina();
     }
@@ -188,11 +191,14 @@ function criarLinks(menuId, paginas) {
 // Exemplo de uso
 function criarLogoLink() {
     const logoLink = document.createElement('a');
+
     let header =  document.getElementById('header-topo');
-    logoLink.href = '/index.html'; // URL do link
-    logoLink.innerHTML = '<img src="/favicon.png" alt="Logo da página">'; // Imagem do logo
-    logoLink.id = 'logo-link'; // ID opcional para estilização
-    header.insertBefore(logoLink, header.firstChild); // Adiciona o logo ao header
+    header.innerHTML = ` <a href="/index.html"><img id="logo-link" src="/favicon.png" alt="Logo da página">  Melhores Custo-Benefício</a>`
+                       ;
+    // logoLink.href = '/index.html'; // URL do link
+    // logoLink.innerHTML = '<img src="/favicon.png" alt="Logo da página">'; // Imagem do logo
+    // logoLink.id = 'logo-link'; // ID opcional para estilização
+    // header.insertBefore(logoLink, header.firstChild); // Adiciona o logo ao header
 }
 
 
@@ -204,13 +210,13 @@ document.addEventListener('DOMContentLoaded', () => {
     criarMenuIndex();
     criarLogoLink();
    
-    if(document.getElementById('sumario') && window.innerWidth <= 1099){
+    if(document.getElementById('sumario') && window.innerWidth <= mediaQuerryMaxWidth){
         document.getElementById('sumario').style.display = 'none'; 
-    } //Gambiarra para esconder o sumário quando a tela é menor que 1099px, estudar o que está acontecendo.
+    } //Gambiarra para esconder o sumário quando a tela é menor que mediaQuerryMaxWidthpx, estudar o que está acontecendo.
     
     criarDivsMenu('menu-site', [
         { id: 'menu-fitness', nome: 'Fitness' },
-        { id: 'menu-tecnologias', nome: 'Tecnologias' },
+        { id: 'menu-informatica', nome: 'Informática' },
         { id: 'menu-utilidade', nome: 'Utilidades' } // Exemplo de um novo menu
     ]);
 
@@ -220,7 +226,7 @@ document.addEventListener('DOMContentLoaded', () => {
         { nome: 'Pré-treinos', url: '/fitness/pre-treino.html' }
     ]);
 
-    criarLinks('menu-tecnologias', [
+    criarLinks('menu-informatica', [
         { nome: 'Em Breve!', url: '#' },
        
     ]);
@@ -282,7 +288,7 @@ function expandirImagem(){
 };
 
 function fechaMenuAcessoRapido() {
-    if(innerWidth > 1099) return; // Não fecha o menu se a tela for maior que 1099px
+    if(innerWidth > mediaQuerryMaxWidth) return; // Não fecha o menu se a tela for maior que mediaQuerryMaxWidthpx
     document.querySelectorAll('#shortcuts a').forEach((link) => {
         link.addEventListener('click', () => {
             document.getElementById('menu-index').click();
@@ -293,21 +299,26 @@ function fechaMenuAcessoRapido() {
 let lastScrollY = window.scrollY;
 
 function toggleMenuSiteOnScroll() {
-    let menuEsquerda = document.getElementById('sumario');
-
-    if (window.innerWidth <= 1099) {
         const menuSite = document.getElementById('menu-site');
+        const sumario = document.getElementById('sumario');
+        const header = document.getElementsByTagName('header')[0];
+        const calcTop = header.offsetHeight + menuSite.offsetHeight; // Calcula a altura do header menos a altura do scroll Y mais a altura do menu site
+        const ofertasDoDia = document.querySelector('#lateral-direita .ofertas-do-dia');
         if (!menuSite) return;
 
-        if (window.scrollY < lastScrollY || menuEsquerda.style.display==='block') {
+        if (window.scrollY < lastScrollY) {
             menuSite.setAttribute('class', 'menu-site-scroll-exibir'); 
-        } else { menuSite.setAttribute('class', '');
+          
+        } else { menuSite.setAttribute('class', 'menu-site-scroll-esconder');
+
             // Scroll para cima - exibe o menu
              }
 
         lastScrollY = window.scrollY;
     }
-}//exibe o nav menu site quando o scroll é para baixo e esconde quando o scroll é para cima
+//exibe o nav menu site quando o scroll é para baixo e esconde quando o scroll é para cima
+
+
 
 window.addEventListener('scroll', () => { 
 toggleMenuSiteOnScroll();
@@ -317,7 +328,7 @@ fecharSumarioScroll();
 
 function fecharSumarioScroll(){
    
-    if(document.getElementById('sumario').style.display==='block' &&  window.innerWidth <= 1099){
+    if(document.getElementById('sumario').style.display==='block' &&  window.innerWidth <= mediaQuerryMaxWidth){
     document.getElementById('menu-index').click();}
 }//Essa função existe para evitar desalinhamento entre o sumario e a nav#menu-site
 
@@ -354,11 +365,11 @@ function criarOfertasDoDia(){
    ;
 
 
-   if(innerWidth > 1099 && conteinerTelasGrandes){
+   if(innerWidth > mediaQuerryMaxWidth && conteinerTelasGrandes){
     conteinerTelasGrandes.appendChild(ofertasDoDia);
    
 
-   }else if(innerWidth <= 1099 && conteinerTelasPequenas){
+   }else if(innerWidth <= mediaQuerryMaxWidth && conteinerTelasPequenas){
     conteinerTelasPequenas.appendChild(ofertasDoDia);
    
 
@@ -478,7 +489,7 @@ function ProdutoOferta(titulo, decricao, loja, foto1Src, foto1Alt, url, valorPor
 function adicionarItensCarouselPorCategoria(produtos) {
     // Identifica o contêiner correto com base no tamanho da tela
     const conteiner =
-        innerWidth > 1099
+        innerWidth > mediaQuerryMaxWidth
             ? document.getElementById('conteiner-ofertas-do-dia-para-telas-grandes')
             : document.getElementById('conteiner-ofertas-do-dia-para-telas-pequenas');
 
@@ -653,12 +664,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         new ProdutoOferta(
             'Tênis Adidas Breaknet Masculino',//Titulo do produto aqui',
-            'Mais de 50 reais de desconto com bastante variedade de tamanhos',//Descrição do produto aqui',
+            'Tênis Adidas Breaknet Masculino com bastante variedade de tamanhos',//Descrição do produto aqui',
             'magalu',//Loja do produto aqui',
             '/imagens/ofertas-do-dia/tennis-adidaas-lista-vermelha.webp',//src da imagem aqui',
             'Imagem Tênis Adidas Breaknet Masculino',//alt da imagem aqui',
             'https://www.magazinevoce.com.br/magazinemelhorescustoben/tenis-adidas-breaknet-masculino/p/cgj8jb2bk5/md/osnr/',//url do produto aqui',
-              159.99,//valor do produto aqui',
+              189.46,//valor do produto aqui',
           'variados',//categoria do produto aqui',
   
   
