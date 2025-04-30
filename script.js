@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]);
 
     criarLinks('menu-informatica', [
-        { nome: 'Em Breve!', url: '#' },
+        { nome: 'Notebooks', url: '/informatica\notebook.html' },
        
     ]);
     

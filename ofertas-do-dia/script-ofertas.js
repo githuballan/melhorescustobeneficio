@@ -332,6 +332,54 @@ document.addEventListener('DOMContentLoaded', () => {
         'perfumaria',//categoria do produto aqui' tecnologia variados fitness
         ),
 
+        new ProdutoOferta(
+          'Panela de pressão',//Titulo do produto aqui',
+          'Brinox Pressure Panela de Pressão Revestimento Cerâmica Indução 4,2L cor Vanilla',//Descrição do produto aqui', amazon mercadolivre magalu
+          'mercadolivre',//Loja do produto aqui',
+          '/imagens/ofertas-do-dia/maes/pressão-42l.webp',//src da imagem aqui',
+          'Imagem da panela',//alt da imagem aqui',
+          'https://www.mercadolivre.com.br/social/melhorescustobenefic?matt_tool=58695067&forceInApp=true&ref=BJvWBxkEkX4jpFkhJa6%2BoPuZz%2BDrM7l%2BwEvU%2FvFGScTqP9yEX4XmrJ8W7snZjmL5mf9Pdc1JqbA2N4MqGOLQCnbAbUnyGmeTwwHJRZ%2B%2BFQgFU3EMfOnZVDe%2F1QGwd8eoa8y2y6KH2FNnBwvn%2ByrlZMaNvsc8hJXL%2Fwe%2FfIutGHGFyrbvsMoi6qdevmjAUu3e593suN4%3D',//url do produto aqui',
+          307.99 ,//valor do produto aqui',
+        'panelas',//categoria do produto aqui' tecnologia variados fitness
+        ),
+
+        new ProdutoOferta(
+          'Panela Pressao',//Titulo do produto aqui',
+          'Panela Pressao Brinox Ceramic Pressure Indução 6,8l Vanilla',//Descrição do produto aqui', amazon mercadolivre magalu
+          'mercadolivre',//Loja do produto aqui',
+          '/imagens/ofertas-do-dia/maes/pressão-68l.webp',//src da imagem aqui',
+          'Imagem  da panela',//alt da imagem aqui',
+          'https://www.mercadolivre.com.br/social/melhorescustobenefic?matt_tool=58695067&forceInApp=true&ref=BI3snAj5UrXOcB2s0vDsVIRNrHb3HpSt2O3UfIC8h3jr1t9CbKib%2F042Q0C5JSr%2BJW823piJw3MOHo%2BEujKeZOvOJZbWYqc0zQpYsQmxj27H9z5iBKjSOzu4787%2FGwwp79qkklOF6ftPwZ6aGEwvJsxGZ1cmnM1A8ioXbD5VlP60Y%2F7AkQ3udmJWMMXggAGUmddJabo%3D',//url do produto aqui',
+          359 ,//valor do produto aqui',
+        'panelas',//categoria do produto aqui' tecnologia variados fitness
+        ),
+
+        new ProdutoOferta(
+          'Ceramic Life Smart Plus Vanilla - Brinox',//Titulo do produto aqui',
+          'Conj de Panelas 8 Peças Ceramic Life Smart Plus Vanilla - Brinox',//Descrição do produto aqui', amazon mercadolivre magalu
+          'mercadolivre',//Loja do produto aqui',
+          '/imagens/ofertas-do-dia/maes/jogo-8pc.webp',//src da imagem aqui',
+          'Imagem da panela',//alt da imagem aqui',
+          'https://www.mercadolivre.com.br/social/melhorescustobenefic?matt_tool=58695067&forceInApp=true&ref=BH57WREQArWbzYuJTR4mF1dFgI4T1hci36OliTvLiXaE2OZbrkIL8fheLjvHda4mvcExYAqMx59bde4P2Mh4JtUuy8Lugeyya2v7rmpPRKjLYDz3rl4zuXamhSXLoHiu8Njn7XDrZScRy4Jf8M95sivmtZYpVA2lWEWMh1BXLA9R0do3hCyq74l%2BPs4DfhEEFIUd%2FYk%3D',//url do produto aqui',
+          712 ,//valor do produto aqui',
+        'panelas',//categoria do produto aqui' tecnologia variados fitness
+        ),
+
+
+
+        new ProdutoOferta(
+          'Panelas Smart Plus Vanilla',//Titulo do produto aqui',
+          'Jogo De Panelas Smart Plus Vanilla Indução Cerâmico 5peças Brinox ',//Descrição do produto aqui', amazon mercadolivre magalu
+          'mercadolivre',//Loja do produto aqui',
+          '/imagens/ofertas-do-dia/maes/jogo-5pc.webp',//src da imagem aqui',
+          'Imagem da panela',//alt da imagem aqui',
+          'https://www.mercadolivre.com.br/social/melhorescustobenefic?matt_tool=58695067&forceInApp=true&ref=BDP3Kz9y5c4ZMT64a8VniotrcTLwoFaTvoJOjdTrUMSP0%2BHTCBcFYwf5J9JnrG3j9IqpGrmi%2FMq9ENcUr9xWk8eU5miRNo8luYkHTkPgpoyrJAHmk5YDD36mxZH6SoOmbAbzX3TPYUj%2B%2Bfj1glWTfOuVempR387QaEUydN4Ueb758iYEMNKaLOa9vGqWdNnoPDM4Tok%3D',//url do produto aqui',
+          464.99 ,//valor do produto aqui',
+        'panelas',//categoria do produto aqui' tecnologia variados fitness
+        ),
+
+
+
 
 
 //---------------------MAES---------------------//
@@ -343,10 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
 //   'XXXXXXXX',//Descrição do produto aqui', amazon mercadolivre magalu
 //   'mercadolivre',//Loja do produto aqui',
 //   '/imagens/ofertas-do-dia/maes/XXXXXXXX.webp',//src da imagem aqui',
-//   'Imagem do perfume',//alt da imagem aqui',
+//   'Imagem da panela',//alt da imagem aqui',
 //   'XXXXXXXX',//url do produto aqui',
 //   0000000 ,//valor do produto aqui',
-// 'perfumaria',//categoria do produto aqui' tecnologia variados fitness
+// 'panelas',//categoria do produto aqui' tecnologia variados fitness
 // ),
 
 
