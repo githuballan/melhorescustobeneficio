@@ -570,10 +570,11 @@ function adicionarProdutosTabela(produtos) {
         colunaValor.innerHTML = `
             R$ ${produto.valorPor.toFixed(2).toString().replace('.', ',')}<br> 
             <a class="ver-oferta" href="${produto.url}" target="_blank">
-               
+                Ver oferta
                 <img src="/imagens/logo-lojas/mini-${produto.loja}.png" alt="Logo marca ${produto.loja}">
             </a>
         `;
+         colunaValor.classList.add('valor-produto');
         novaLinha.appendChild(colunaValor);
 
         // Adiciona a nova linha ao tbody

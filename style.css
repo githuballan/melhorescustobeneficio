@@ -170,6 +170,8 @@ vermelho pra seta do carrinho*/
     
     }
 
+    
+
 
     #lateral-direita {
        display: flex;
@@ -536,6 +538,14 @@ height: var(--height-menu-site);}
   
     /* box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.342); */
 }
+#links-relacionados a:hover{
+    transform: scale(1.02);
+    box-shadow: #ddd 0px 0px 5px 1px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  
+    /* box-shadow: inset 1px 1px 5px 1px rgba(0, 0, 0, 0.342); */
+}
 
 #links-relacionados a *{
    padding: 0px;
@@ -776,13 +786,13 @@ a{
     text-decoration: none;
     color: inherit
 }
-
+/* 
 li a:hover {
    
     text-decoration: underline;
     transform: scale(1.1);
     transition: all 0.3s ease-in-out;
-}
+} */
 
 
 
@@ -839,8 +849,42 @@ caption{
 
   
 }
+td.valor-produto{
+    white-space: nowrap;
+
+    .ver-oferta{
+ 
+ 
+        color: #fff;
+        align-self:center;
+    
+        width: 100%;
+        background-color: rgb(77 169 44);
+        padding: 5px;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+    
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        img{
+            width: 20px;
+            height: 20px;
+            margin: 0px 5px 0px 5px;
+        }
+
+    
+       
+    }
+}
 
 
+    .ver-oferta:hover{
+            scale: 1.05;
+            transition: all 0.2s ease-in-out;
+        }
 .tabela-produto th{
     background-color: var(--secondary-color);
     color: #fff;
@@ -999,29 +1043,7 @@ fieldset {
 
 
 
-/* #up-page{
-    background-color: var(--main-color);
-    color: #fff;
-    font-size: 1.5rem;
-    font-weight: bold;
-    height: 45px;
-    width: 45px;
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 100;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
-}
-#up-page:hover{
-
-transform: scale(1.02);
-box-shadow: #ddd 0px 0px 5px 1px;
-transition: all 0.2s ease-in-out;
-} */
 footer{
     background-color: #9acd32;
     font-size: smaller;

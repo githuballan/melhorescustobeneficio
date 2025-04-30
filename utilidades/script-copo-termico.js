@@ -25,7 +25,7 @@ function preencherElementosPorClasse(produto) {
        img2Elements.forEach(img2 => {
            img2.setAttribute('src', produto.foto2.src);
            img2.setAttribute('alt', produto.foto2.alt);
-           img1.setAttribute('class', 'img-produto'); // Adicionando a classe 'img-produto'
+           img2.setAttribute('class', 'img-produto'); // Adicionando a classe 'img-produto'
        });
    } else {
        console.warn(`Elements with class img2-${produto.titulo} not found`);
@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         '/utilidades/imagens/romantic-crown/copo-colerman-600ml-2.jpg',
         'Imagem do copo termico 600ml da marca Colerman',
         'https://www.amazon.com.br/Copo-T%C3%A9rmico-Cerveja-Abridor-Preto/dp/B08R7RXM4J?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=BH5H85PDV39Q&dib=eyJ2IjoiMSJ9.GmU_nvF5_LgF32iR7prXH64-XiG24vaoWDxHZB_B8ZUMMCSv5AlcYwzuCfTbh7b-2txilBcCK8LlGMXCs_jNZEMXbt9ga7Immx6dzq5gOojlLo8SNMgGJbcpQm-jIjKriQr0eqWaWLzxCNzNWIZaBL3hQEJhgu2CJM1t7b4I69fv7ciCFDG5sqCgmuZWz-TjYZcz4QRF6CBZUWrEICEKjlrM2UnIwHj4brqyWjkDyH4.4AAFTEKc2pTHekb3-YRf7DdDBoe0v2U6t5zeixvb_1c&dib_tag=se&keywords=copo%2Bt%C3%A9rmico%2Bcaf%C3%A9&qid=1745362009&s=kitchen&sprefix=copo%2Bt%C3%A9rmico%2Bcaf%C3%A9%2Ckitchen%2C242&sr=1-7&ufe=app_do%3Aamzn1.fos.6d798eae-cadf-45de-946a-f477d47705b9&xpid=TFEKpdNI0nj0y&th=1&linkCode=ll1&tag=allanamazon07-20&linkId=461ba0625c7a4e99049d447505da0998&language=pt_BR&ref_=as_li_ss_tl',
-        80.62
+        80.62,
     )
     preencherElementosPorClasse(copoColerman600ml);
     preencherElementosPorClasse(GarrafaMagSafe);
