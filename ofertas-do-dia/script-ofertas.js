@@ -190,11 +190,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+            new ProdutoOferta(
+              'Celular',//Titulo do produto aqui',
+              'Smartphone Samsung Galaxy A15 6,5" 128GB Azul Escuro 4G 4GB RAM Câm. Tripla 50MP + Selfie 13MP 5000mAh Dual Chip',//Descrição do produto aqui', amazon magalu
+              'magalu',//Loja do produto aqui',
+              '/imagens/ofertas-do-dia/maes/celular-a15.webp',//src da imagem aqui',
+              'Imagem celular A15',//alt da imagem aqui',
+              'https://www.magazinevoce.com.br/magazinemelhorescustoben/smartphone-samsung-galaxy-a15-65-128gb-azul-escuro-4g-4gb-ram-cam-tripla-50mp-selfie-13mp-5000mah-dual-chip/p/237216400/te/ga14/',//url do produto aqui',
+               809 ,//valor do produto aqui',
+            'tecnologias',//categoria do produto aqui' tecnologia variados fitness
+           ),
+
+
+           
+           new ProdutoOferta(
+              'Echo Pop ',//Titulo do produto aqui',
+              'Echo Pop (Última geração) | Smart speaker compacto com som envolvente e Alexa | Cor Preta',//Descrição do produto aqui', amazon magalu
+              'amazon',//Loja do produto aqui',
+              '/imagens/ofertas-do-dia/maes/echo.jpg',//src da imagem aqui',
+              'Imagem copo Stanley',//alt da imagem aqui',
+              'https://www.amazon.com.br/Echo-Pop-Cor-Preta/dp/B09WXVH7WK?_encoding=UTF8&pd_rd_w=FuACD&content-id=amzn1.sym.8fbb3d34-c3f1-46af-9d99-fd6986f6ec8f&pf_rd_p=8fbb3d34-c3f1-46af-9d99-fd6986f6ec8f&pf_rd_r=0RTZR0XKY45KSDN76YSH&pd_rd_wg=caNDe&pd_rd_r=55d446f1-9bd0-43f9-9c85-191b0164f0db&th=1&linkCode=ll1&tag=allanamazon07-20&linkId=350a0ac920a2e1c4dd99fcb7ee2bc35e&language=pt_BR&ref_=as_li_ss_tl',//url do produto aqui',
+               319 ,//valor do produto aqui',
+            'tecnologias',//categoria do produto aqui' tecnologia variados fitness
+           ),
+
+
+
            // new ProdutoOferta(
             //   '',//Titulo do produto aqui',
             //   '',//Descrição do produto aqui', amazon magalu
             //   'amazon',//Loja do produto aqui',
-            //   '/imagens/ofertas-do-dia/stanley/quencher.jpg',//src da imagem aqui',
+            //   '/imagens/ofertas-do-dia/maes/celular-a15.webp',//src da imagem aqui',
             //   'Imagem copo Stanley',//alt da imagem aqui',
             //   '',//url do produto aqui',
             //    0 ,//valor do produto aqui',

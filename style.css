@@ -452,6 +452,21 @@ vermelho pra seta do carrinho*/
 
 
 
+    .img-capa-da-pagina{
+    max-height: 500px;
+    overflow: hidden;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-direction: column;    
+    }
+
+    .img-capa-da-pagina img{
+        width: 100%;
+    }
 
 #menu-site {
  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.342);

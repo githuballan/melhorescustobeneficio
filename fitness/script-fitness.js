@@ -25,7 +25,7 @@ function preencherElementosPorClasse(produto) {
        img2Elements.forEach(img2 => {
            img2.setAttribute('src', produto.foto2.src);
            img2.setAttribute('alt', produto.foto2.alt);
-           img1.setAttribute('class', 'img-produto'); // Adicionando a classe 'img-produto'
+           img2.setAttribute('class', 'img-produto'); // Adicionando a classe 'img-produto'
        });
    } else {
        console.warn(`Elements with class img2-${produto.titulo} not found`);
@@ -49,9 +49,62 @@ function preencherElementosPorClasse(produto) {
     }
 }
 
+
+function inserirLinksRelacionados() {
+    const linksRelacionados = [
+        {
+            url: "/fitness/whey.html",
+            imgSrc: "/fitness/imagens/capas-de-paginas/capa-whey.jpg",
+            imgAlt: "Imagem de Whey Protein",
+            titulo: "Melhores Whey Protein"
+        },
+        {
+            url: "/fitness/creatina.html",
+            imgSrc: "/fitness/imagens/capas-de-paginas/capa-creatina.jpg",
+            imgAlt: "Imagem de Creatina",
+            titulo: "Melhores creatinas"
+        },
+        {
+            url: "/fitness/pre-treino.html",
+            imgSrc: "/fitness/imagens/capas-de-paginas/capa-pre-treino.jpg",
+            imgAlt: "Imagem de Pré-treino",
+            titulo: "Melhores pre-treinos"
+        }
+    ];
+
+    const container = document.getElementById("links-relacionados");
+
+    if (!container) {
+        console.warn("Elemento com o ID 'links-relacionados' não foi encontrado.");
+        return;
+    }
+
+    linksRelacionados.forEach(link => {
+        const anchor = document.createElement("a");
+        anchor.href = link.url;
+
+        const img = document.createElement("img");
+        img.src = link.imgSrc;
+        img.alt = link.imgAlt;
+        img.classList.add("img-capa");
+
+        const titulo = document.createElement("h3");
+        titulo.textContent = link.titulo;
+
+        anchor.appendChild(img);
+        anchor.appendChild(titulo);
+        container.appendChild(anchor);
+    });
+}
+
+
+
 // Exemplo de uso no DOMContentLoaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('rodando script termo.js');
+
+    inserirLinksRelacionados();
+    // Preenchendo os elementos do DOM com os produtos
 
     // Criando objetos de produtos usando a função construtora
     const kimee = new Produto(

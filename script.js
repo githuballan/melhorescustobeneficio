@@ -600,6 +600,27 @@ document.addEventListener('DOMContentLoaded', () => {
             1299.00,
             'tecnologia'
         ),
+
+        
+        new ProdutoOferta(
+            'Macbook Apple Air',//Titulo do produto aqui',
+            ' Macbook Apple Air 15" M3 24GB RAM SSD 512GB Prateado. MENOR PREÇO HISTÓRICO com nosso cupom: 100MELHORESCUSTOBEN',//Descrição do produto aqui',
+            'magalu',//Loja do produto aqui',
+            '/imagens/ofertas-do-dia/mac-book.jpg',//src da imagem aqui',
+            'Imagem mac book air 15"',//alt da imagem aqui',
+            'https://www.magazinevoce.com.br/magazinemelhorescustoben/notebook-macbook-apple-air-15-m3-24gb-ram-ssd-512gb-prateado/p/238884400/in/mack/',//url do produto aqui',
+            14939.10,//valor do produto aqui',
+          'variados',//categoria do produto aqui' tecnologia variados fitness
+  
+  
+          ),
+  
+
+
+
+
+
+
         new ProdutoOferta(
             'Kit 3 Nutellas de 350g',
             'Nessa promoção o pote de 350g sai por menos de 20 reais',
