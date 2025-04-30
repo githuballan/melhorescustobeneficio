@@ -215,16 +215,40 @@ document.addEventListener('DOMContentLoaded', () => {
            ),
 
 
+           new ProdutoOferta(
+              'Kindle',//Titulo do produto aqui',
+              'Novo Kindle (16 GB - modelo 2024) - Leve e compacto, com tela antirreflexo, trocas de página mais rápidas, luz frontal ajustável e bateria de longa duração - Cor Verde',//Descrição do produto aqui', amazon magalu
+              'amazon',//Loja do produto aqui',
+              '/imagens/ofertas-do-dia/maes/kindle.jpg',//src da imagem aqui',
+              'Imagem do kindle',//alt da imagem aqui',
+              'https://www.amazon.com.br/kindle-16gb-verde/dp/B0CP31QS6R?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=FX5R21TQUIRI&dib=eyJ2IjoiMSJ9.kbn6OcEFCdpZ_4_ZxrXNiMTB9j8KcpWsfZhOSUZR4sTwqYvInG0jlM9udD003YdtjJUyTXNve_yph_atr_VqZ12q_Y2V62E118_oakWE_RK-eM01U6THyuJa9ix04Wh8VLsAnF35f8KQHVVUkjOc-3ggj7MEgiCtswjO3wWUE1M0B5HABff9ImRFLJmI0bf06CZFUgu2jT_nR46ehohFfvCjAVugRZnYTXefzNzF4d2OAquYRzcZhLDWntsAdICPb8iDPcO8sbtPWrrmeBOQ1bSPcq89rppYy_xlM3AUVks.Z_0RAfDF-iVbCZHPKIOAqQLK0QiF7vr5cJbAlSHzkO4&dib_tag=se&keywords=kindle&qid=1746024898&sprefix=kindle%2Caps%2C348&sr=8-1&ufe=app_do%3Aamzn1.fos.95de73c3-5dda-43a7-bd1f-63af03b14751&th=1&linkCode=ll1&tag=allanamazon07-20&linkId=a9ec613c58f0ae39c62850c8ca514868&language=pt_BR&ref_=as_li_ss_tl',//url do produto aqui',
+               569 ,//valor do produto aqui',
+            'tecnologias',//categoria do produto aqui' tecnologia variados fitness
+           ),
+
+           new ProdutoOferta(
+              'Echo Dot',//Titulo do produto aqui',
+              'Echo Dot (Última geração) | O Echo Dot com o melhor som já lançado | Cor Preta',//Descrição do produto aqui', amazon magalu
+              'amazon',//Loja do produto aqui',
+              '/imagens/ofertas-do-dia/maes/echo-bola.jpg',//src da imagem aqui',
+              'Imagem Echo Dot (Última geração) Cor Preta',//alt da imagem aqui',
+              'https://www.amazon.com.br/Echo-Dot-5%C2%AA-gera%C3%A7%C3%A3o-Cor-Preta/dp/B09B8VGCR8?pd_rd_w=4kMhC&content-id=amzn1.sym.6c467c3e-30d6-44a6-a3dc-69f18a051b8c&pf_rd_p=6c467c3e-30d6-44a6-a3dc-69f18a051b8c&pf_rd_r=HQKGTDDYPWPY3W0CAJNJ&pd_rd_wg=TWjU9&pd_rd_r=e5a4041f-fba8-466d-b4a4-7fcadc5fc33e&pd_rd_i=B09B8VGCR8&th=1&linkCode=ll1&tag=allanamazon07-20&linkId=74cc877dca44c7e47b87a8a94061c722&language=pt_BR&ref_=as_li_ss_tl',//url do produto aqui',
+               459 ,//valor do produto aqui',
+            'tecnologias',//categoria do produto aqui' tecnologia variados fitness
+           ),
+
+
+
 
            // new ProdutoOferta(
             //   '',//Titulo do produto aqui',
             //   '',//Descrição do produto aqui', amazon magalu
             //   'amazon',//Loja do produto aqui',
-            //   '/imagens/ofertas-do-dia/maes/celular-a15.webp',//src da imagem aqui',
+            //   '/imagens/ofertas-do-dia/maes/cecho-bola.jpg',//src da imagem aqui',
             //   'Imagem copo Stanley',//alt da imagem aqui',
             //   '',//url do produto aqui',
             //    0 ,//valor do produto aqui',
-            // 'stanley',//categoria do produto aqui' tecnologia variados fitness
+            // 'tecnologias',//categoria do produto aqui' tecnologia variados fitness
            //),
 
     
