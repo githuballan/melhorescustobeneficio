@@ -21,7 +21,7 @@
   
     <!-- Link para o arquivo JavaScript externo -->
 
-    <title>Cupom de 20% OFF em Produtos Stanley - Copos a partir de R$ 72</title>
+    <title>Stanley com Cupom de 20% OFF|Melhores custo-benefício</title>
     <style>
         
     </style>
@@ -54,25 +54,17 @@
     </nav> -->
    </div>
     <main>
+                <div id="toast" class="toast"></div>
     
         <img width="100%" src="/imagens/ofertas-do-dia/staley.jpg" alt="">
   
         <section class="intro">
     
-      <h1>Amazon oferece cupom de 20% na compra de produtos Stanley – copos a partir de R$ 72!</h1>
-    <p>Se você ainda não tem um verdadeiro Stanley, Chegou o seu momento! A Amazon está oferecendo um cupom de <strong>20% OFF</strong> em diversos produtos da marca. É possível encontrar copos térmicos a partir de <strong>R$ 72</strong>! Para isso basta aplicar o cupom <strong onclick="copyCoupon()" id="coupon-code">STANLEY20</strong>  <button onclick="copyCoupon()">Copiar Cupom</button> 
+      <h1>Amazon oferece cupom de 20% na compra de produtos Stanley</h1>
+    <p>Se você ainda não tem um verdadeiro Stanley, Chegou o seu momento! A Amazon está oferecendo um cupom de <strong>20% OFF</strong> em diversos produtos da marca. </strong>! Para isso basta aplicar o cupom <strong id="coupon-code">STANLEY20</strong>.  <button onclick="copyCoupon('coupon-code')">Copiar Cupom</button> 
 </p> 
   
-    <script>
-        function copyCoupon() {
-            const coupon = document.getElementById('coupon-code').innerText;
-            navigator.clipboard.writeText(coupon).then(() => {
-                alert('Cupom copiado: ' + coupon);
-            }).catch(err => {
-                console.error('Erro ao copiar o cupom: ', err);
-            });
-        }
-    </script>
+
     <p>Mas atenção! O desconto é válido apenas  para compras realizadas pelo aplicativo da Amazon e pode ser aplicado em diversos produtos Stanley, incluindo copos e garrafas térmicas.</p>
  
     

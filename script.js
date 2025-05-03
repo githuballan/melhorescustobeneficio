@@ -227,7 +227,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ]);
 
     criarLinks('menu-informatica', [
-        { nome: 'Notebooks', url: '/informatica\notebook.html' },
+        { nome: 'Notebooks', url: '/informatica/notebook.html' },
        
     ]);
     
@@ -327,12 +327,25 @@ fecharSumarioScroll();
 });
 
 function fecharSumarioScroll(){
-   
-    if(document.getElementById('sumario').style.display==='block' &&  window.innerWidth <= mediaQuerryMaxWidth){
+
+    const sumario = document.getElementById('sumario');
+   if(!sumario) return; // Verifica se o elemento existe antes de continuar
+    if(sumario.style.display==='block' &&  window.innerWidth <= mediaQuerryMaxWidth){
     document.getElementById('menu-index').click();}
 }//Essa função existe para evitar desalinhamento entre o sumario e a nav#menu-site
 
+function mostrarToast(mensagem) {
+    const toast = document.getElementById('toast');
+    if (!toast) return;
 
+    toast.textContent = mensagem; // Define a mensagem do toast
+    toast.classList.add('show'); // Adiciona a classe para exibir o toast
+
+    // Remove o toast após 3 segundos
+    setTimeout(() => {
+        toast.classList.remove('show');
+    }, 3000);
+}
 
 
 
@@ -540,9 +553,16 @@ function adicionarItensCarouselPorCategoria(produtos) {
         });
 }
 
-
-
-
+function copyCoupon(id) {
+    const coupon = document.getElementById(id).innerText;
+    navigator.clipboard.writeText(coupon).then(() => {
+        mostrarToast('Cupom '+coupon+' copiado com sucesso!');
+        console.log('Cupom copiado: ', coupon);
+    }).catch(err => {
+        mostrarToast('Erro ao copiar o cupom.');
+        console.error('Erro ao copiar o cupom: ', err);
+    });
+}
 function adicionarProdutosTabela(produtos) {
     produtos.forEach(produto => {
         const tbody = document.getElementById(produto.categoria);
@@ -550,6 +570,12 @@ function adicionarProdutosTabela(produtos) {
         if (!tbody) {
             console.warn(`Elemento com o ID "${produto.categoria}" não foi encontrado.`);
             return;
+        }
+
+        if(produto.categoria==='stanley'){ 
+            let valor= produto.valorPor - produto.valorPor*0.2;
+            produto.valorPor=valor;
+
         }
 
         const novaLinha = document.createElement('tr');
@@ -648,22 +674,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
      
-        new ProdutoOferta(
-            'Whey Protein Isolado',
+        // new ProdutoOferta(
+        //     'Whey Protein Isolado',
 
-            '26 g de proteína por dose e 5,4g de BCAA',
+        //     '26 g de proteína por dose e 5,4g de BCAA',
 
-            'magalu',
+        //     'magalu',
 
-            '/imagens/ofertas-do-dia/whey-fuse-isolate.webp',
+        //     '/imagens/ofertas-do-dia/whey-fuse-isolate.webp',
 
-            'Imagem do Whey Protein Isolado',
+        //     'Imagem do Whey Protein Isolado',
 
-            'https://www.magazinevoce.com.br/magazinemelhorescustoben/whey-isolate-protein-fuse-900g-bcaas-whey-protein-glutamina-e-aminoacidos-essenciais-ganho-de-musculos-ganho-de-peso-sem-gordura-dark-lab/p/gff61e8kae/sa/samm/',
+        //     'https://www.magazinevoce.com.br/magazinemelhorescustoben/whey-isolate-protein-fuse-900g-bcaas-whey-protein-glutamina-e-aminoacidos-essenciais-ganho-de-musculos-ganho-de-peso-sem-gordura-dark-lab/p/gff61e8kae/sa/samm/',
 
-            65.01,
-            'fitness'
-        ),
+        //     65.01,
+        //     'fitness'
+        // ),
 
         new ProdutoOferta(
            'Creatina Pura Integralmédica',
@@ -704,7 +730,7 @@ document.addEventListener('DOMContentLoaded', () => {
           '/imagens/ofertas-do-dia/smartwatch-xiaomi.jpeg',//src da imagem aqui',
           'Imagem do produto',//alt da imagem aqui',
           'https://www.amazon.com.br/Xiaomi-Active-vers%C3%A3o-global-Preto/dp/B0CHJ2C1YS?th=1&linkCode=ll1&tag=allanamazon07-20&linkId=0a0db8101e44cb1e603423bc4d6e1035&language=pt_BR&ref_=as_li_ss_tl',//url do produto aqui',
-          205.90,//valor do produto aqui',
+          187.90,//valor do produto aqui',
         'tecnologia',//categoria do produto aqui' tecnologia variados fitness
 
 
@@ -734,9 +760,10 @@ document.addEventListener('DOMContentLoaded', () => {
    
 
     adicionarItensCarouselPorCategoria(produtos);
+    
+  expandirImagem();
 
-    expandirImagem();
-
+  
     carrocel();
 });
 
